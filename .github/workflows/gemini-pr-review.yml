@@ -7,6 +7,10 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
     steps:
       - uses: actions/checkout@v3
 
@@ -31,7 +35,7 @@ jobs:
               }]
             }" \
             https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent)
-          
+
           echo "$RESPONSE" > response.json
           COMMENT=$(jq -r '.candidates[0].content.parts[0].text' response.json)
           echo "comment<<EOF" >> $GITHUB_OUTPUT
