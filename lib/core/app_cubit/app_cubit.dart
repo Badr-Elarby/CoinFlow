@@ -14,15 +14,14 @@ class AppCubit extends Cubit<AppState> {
 
   StreamSubscription? _subscription;
 
-  void _loadTheme() {
-    final saved = SharedPrefHelper.getString('theme');
-    ThemeMode themeMode = ThemeMode.system;
+  Future<void> _loadTheme() async {
+    final saved = await SharedPrefHelper.getString('theme');
 
-    if (saved == 'light') {
-      themeMode = ThemeMode.light;
-    } else if (saved == 'dark') {
-      themeMode = ThemeMode.dark;
-    }
+    final themeMode = switch (saved) {
+      'light' => ThemeMode.light,
+      'dark' => ThemeMode.dark,
+      _ => ThemeMode.system,
+    };
 
     emit(AppInitial(themeMode: themeMode, hasInternet: state.hasInternet));
   }
