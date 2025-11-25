@@ -38,13 +38,18 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void checkConnection() {
+    Connectivity().checkConnectivity().then((result) {
+      final hasInternet = result.any(
+        (e) => e == ConnectivityResult.wifi || e == ConnectivityResult.mobile,
+      );
+      emit(AppUpdated(themeMode: state.themeMode, hasInternet: hasInternet));
+    });
     _subscription = Connectivity().onConnectivityChanged.listen((
       List<ConnectivityResult> result,
     ) {
       final hasInternet = result.any(
         (e) => e == ConnectivityResult.wifi || e == ConnectivityResult.mobile,
       );
-
       emit(AppUpdated(themeMode: state.themeMode, hasInternet: hasInternet));
     });
   }
