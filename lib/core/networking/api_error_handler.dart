@@ -15,7 +15,7 @@ class ApiErrorHandler {
             ),
           );
         case DioExceptionType.badResponse:
-          return _handleError(error.response?.data);
+          return handleApiError(error.response!);
         case DioExceptionType.connectionError:
           return ApiErrorModel(
             status: ApiStatus(
@@ -75,17 +75,15 @@ class ApiErrorHandler {
     }
   }
 
-  static ApiErrorModel _handleError(dynamic data) {
-    if (data is Map<String, dynamic>) {
-      return ApiErrorModel(
-        status: ApiStatus(
-          timestamp: DateTime.now().toIso8601String(),
-          errorCode: data['code'] ?? 500,
-          errorMessage: data['message'] ?? "Unknown error occurred",
-        ),
-      );
-    }
+  static ApiErrorModel handleApiError(Response response) {
+    final status = response.data['status'];
 
-    return ApiErrorFactory.defaultError;
+    return ApiErrorModel(
+      status: ApiStatus(
+        timestamp: status['timestamp'],
+        errorCode: status['error_code'],
+        errorMessage: status['error_message'],
+      ),
+    );
   }
 }
