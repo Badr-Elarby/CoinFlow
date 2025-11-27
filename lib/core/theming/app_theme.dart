@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:team_7/core/theming/app_text_theme.dart';
 import 'app_colors.dart';
 
 class AppTheme {
@@ -15,11 +14,8 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.lightColorScheme.onSurface),
-        titleTextStyle: AppTextStyles.textTheme(
-          AppColors.lightColorScheme,
-        ).titleLarge,
+        // titleTextStyle → DELETE
       ),
-      textTheme: AppTextStyles.textTheme(AppColors.lightColorScheme),
       cardTheme: CardThemeData(
         color: AppColors.lightSurface,
         elevation: 0,
@@ -65,11 +61,8 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.darkColorScheme.onSurface),
-        titleTextStyle: AppTextStyles.textTheme(
-          AppColors.darkColorScheme,
-        ).titleLarge,
+        // titleTextStyle → DELETE
       ),
-      textTheme: AppTextStyles.textTheme(AppColors.darkColorScheme),
       cardTheme: CardThemeData(
         color: AppColors.darkSurface,
         elevation: 0,
