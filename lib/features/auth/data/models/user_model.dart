@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'user_model.g.dart';
+
+@JsonSerializable()
 class UserModel {
   final String uid;
   final String? email;
@@ -28,26 +32,9 @@ class UserModel {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'uid': uid,
-      'email': email,
-      'displayName': displayName,
-      'photoURL': photoURL,
-      'emailVerified': emailVerified,
-      'phoneNumber': phoneNumber,
-    };
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      uid: json['uid'] as String,
-      email: json['email'] as String?,
-      displayName: json['displayName'] as String?,
-      photoURL: json['photoURL'] as String?,
-      emailVerified: json['emailVerified'] as bool,
-      phoneNumber: json['phoneNumber'] as String?,
-    );
-  }
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }
 

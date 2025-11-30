@@ -1,35 +1,19 @@
 part of 'sign_up_cubit.dart';
 
-enum SignUpStatus {
-  initial,
-  loading,
-  success,
-  error,
+sealed class SignUpState {}
+
+class SignUpInitial extends SignUpState {}
+
+class SignUpLoading extends SignUpState {}
+
+class SignUpSuccess extends SignUpState {
+  final Map<String, dynamic> userData;
+
+  SignUpSuccess(this.userData);
 }
 
-class SignUpState {
-  final SignUpStatus status;
-  final String? errorMessage;
-  final Map<String, dynamic>? userData;
+class SignUpError extends SignUpState {
+  final String errorMessage;
 
-  SignUpState({
-    this.status = SignUpStatus.initial,
-    this.errorMessage,
-    this.userData,
-  });
-
-  SignUpState copyWith({
-    SignUpStatus? status,
-    String? errorMessage,
-    Map<String, dynamic>? userData,
-  }) {
-    return SignUpState(
-      status: status ?? this.status,
-      errorMessage: errorMessage,
-      userData: userData ?? this.userData,
-    );
-  }
+  SignUpError(this.errorMessage);
 }
-
-
-

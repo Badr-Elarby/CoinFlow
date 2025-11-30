@@ -55,10 +55,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: colorScheme.onPrimary,
       body: BlocListener<SignUpCubit, SignUpState>(
         listener: (context, state) {
-          if (state.status == SignUpStatus.success) {
-            _showSuccessMessage(context);
-          } else if (state.status == SignUpStatus.error) {
-            _showErrorMessage(context, state.errorMessage);
+          switch (state) {
+            case SignUpSuccess():
+              _showSuccessMessage(context);
+              break;
+            case SignUpError(:final errorMessage):
+              _showErrorMessage(context, errorMessage);
+              break;
+            case SignUpInitial():
+            case SignUpLoading():
+              break;
           }
         },
         child: Stack(

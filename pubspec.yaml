@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   dio: ^5.9.0
   json_annotation: ^4.9.0
+  json_serializable: ^6.11.3
   dartz: ^0.10.1
   retrofit: ^4.9.1
   retrofit_generator: ^10.0.6

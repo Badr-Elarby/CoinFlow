@@ -6,9 +6,21 @@ class FirebaseErrorHandler {
     if (error is FirebaseAuthException) {
       return _handleFirebaseAuthException(error);
     } else if (error is Exception) {
-      return _handleGeneralException(error);
+      return ApiErrorModel(
+        status: ApiStatus(
+          timestamp: DateTime.now().toIso8601String(),
+          errorCode: 400,
+          errorMessage: error.toString().replaceFirst('Exception: ', ''),
+        ),
+      );
     } else {
-      return _defaultError();
+      return ApiErrorModel(
+        status: ApiStatus(
+          timestamp: DateTime.now().toIso8601String(),
+          errorCode: 500,
+          errorMessage: 'An unexpected error occurred.',
+        ),
+      );
     }
   }
 
@@ -70,28 +82,4 @@ class FirebaseErrorHandler {
       ),
     );
   }
-
-  static ApiErrorModel _handleGeneralException(Exception e) {
-    final message = e.toString().replaceFirst('Exception: ', '');
-    return ApiErrorModel(
-      status: ApiStatus(
-        timestamp: DateTime.now().toIso8601String(),
-        errorCode: 400,
-        errorMessage: message,
-      ),
-    );
-  }
-
-  static ApiErrorModel _defaultError() {
-    return ApiErrorModel(
-      status: ApiStatus(
-        timestamp: DateTime.now().toIso8601String(),
-        errorCode: 500,
-        errorMessage: 'An unexpected error occurred.',
-      ),
-    );
-  }
 }
-
-
-

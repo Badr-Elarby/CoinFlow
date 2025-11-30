@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:team_7/features/auth/domain/usecases/sign_up_us.dart';
+import 'package:team_7/features/auth/domain/repository/sign_up_repo.dart';
 
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  final SignUpUC _signUpUseCase;
+  final SignUpRepo _signUpRepo;
 
-  SignUpCubit(this._signUpUseCase) : super(SignUpState());
+  SignUpCubit(this._signUpRepo) : super(SignUpInitial());
 
   Future<void> signUp({
     required String firstName,
@@ -16,12 +16,9 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String confirmPassword,
     required String phone,
   }) async {
-    emit(state.copyWith(
-      status: SignUpStatus.loading,
-      errorMessage: null,
-    ));
+    emit(SignUpLoading());
 
-    final result = await _signUpUseCase.call(
+    final result = await _signUpRepo.signup(
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -32,21 +29,11 @@ class SignUpCubit extends Cubit<SignUpState> {
 
     result.when(
       onSuccess: (data) {
-        emit(state.copyWith(
-          status: SignUpStatus.success,
-          userData: data,
-          errorMessage: null,
-        ));
+        emit(SignUpSuccess(data));
       },
       onError: (error) {
-        emit(state.copyWith(
-          status: SignUpStatus.error,
-          errorMessage: error.status.errorMessage,
-        ));
+        emit(SignUpError(error.status.errorMessage));
       },
     );
   }
 }
-
-
-

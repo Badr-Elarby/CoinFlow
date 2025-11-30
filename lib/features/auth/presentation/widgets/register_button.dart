@@ -16,7 +16,7 @@ class RegisterButton extends StatelessWidget {
         return CustomButton(
           text: 'Register',
           onPressed: onPressed,
-          isLoading: state.status == SignUpStatus.loading,
+          isLoading:state is SignUpLoading,
           width: double.infinity,
           backgroundColor: colorScheme.primary,
           textColor: colorScheme.onPrimary,
