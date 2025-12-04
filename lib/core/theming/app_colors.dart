@@ -13,7 +13,7 @@ class AppColors {
   static const Color _lightOutline = Color(0xFFCBD5E1);
 
   // Dark Theme Palette
-  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkBackground = Color(0xFF0D0D0D);
   static const Color darkSurface = Color(0xFF121212);
   static const Color _darkPrimary = Colors.white;
   static const Color _darkOnPrimary = Colors.black;
@@ -81,9 +81,9 @@ class AppExtraColors {
   static const Color cyanDark = Color(0xFF51CAE2);
   static const Color gray = Color(0xFF8C8C8C);
   static const Color paleSky = Color(0xFF8E949A);
-  static const Color white = Colors.white;
-  static const Color steelBlueGrey = Color(0xFF494D58);
+  static const Color white = Color(0xFFFFFFFF);
   static const Color iceBlue = Color(0xFFF5F8FE);
+  static const Color steelBlueGrey = Color(0xFF494D58);
 
   // Decorative
   static const Color ellipse = Color(0x1A4F5962); // #4F59621A
