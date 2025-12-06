@@ -24,3 +24,9 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'phoneNumber': instance.phoneNumber,
     };
 
+
+
+
+
+
+

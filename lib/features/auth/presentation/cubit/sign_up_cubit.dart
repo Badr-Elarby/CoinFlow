@@ -1,38 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:team_7/features/auth/domain/repository/sign_up_repo.dart';
+import 'package:team_7/core/networking/api_error_model.dart';
+import 'package:team_7/features/auth/data/models/request_holder_signup.dart';
+import 'package:team_7/features/auth/data/models/user_model.dart';
+import 'package:team_7/features/auth/domain/repository/auth_repo.dart';
 
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  final SignUpRepo _signUpRepo;
+  final AuthRepo _authRepo;
 
-  SignUpCubit(this._signUpRepo) : super(SignUpInitial());
+  SignUpCubit(this._authRepo) : super(SignUpInitial());
 
-  Future<void> signUp({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String password,
-    required String confirmPassword,
-    required String phone,
-  }) async {
+  Future<void> signUp(RequestHolderSignup requestHolderSignup) async {
     emit(SignUpLoading());
 
-    final result = await _signUpRepo.signup(
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-      phone: phone,
+    final result = await _authRepo.signup(
+      requestHolderSignup: requestHolderSignup,
     );
 
     result.when(
-      onSuccess: (data) {
-        emit(SignUpSuccess(data));
+      onSuccess: (userModel) {
+        emit(SignUpSuccess(userModel));
       },
       onError: (error) {
-        emit(SignUpError(error.status.errorMessage));
+        emit(SignUpError(error));
       },
     );
   }

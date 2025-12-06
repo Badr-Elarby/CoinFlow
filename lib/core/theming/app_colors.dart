@@ -84,6 +84,7 @@ class AppExtraColors {
   static const Color white = Colors.white;
   static const Color steelBlueGrey = Color(0xFF494D58);
   static const Color iceBlue = Color(0xFFF5F8FE);
+  static const Color transparent = Colors.transparent;
 
   // Decorative
   static const Color ellipse = Color(0x1A4F5962); // #4F59621A

@@ -7,13 +7,13 @@ class SignUpInitial extends SignUpState {}
 class SignUpLoading extends SignUpState {}
 
 class SignUpSuccess extends SignUpState {
-  final Map<String, dynamic> userData;
+  final UserModel userModel;
 
-  SignUpSuccess(this.userData);
+  SignUpSuccess(this.userModel);
 }
 
 class SignUpError extends SignUpState {
-  final String errorMessage;
+  final ApiErrorModel errorMessage;
 
   SignUpError(this.errorMessage);
 }

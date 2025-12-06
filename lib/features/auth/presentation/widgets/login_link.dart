@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team_7/core/theming/app-text.dart';
 import 'package:team_7/core/theming/app_colors.dart';
+import 'package:team_7/features/auth/domain/repository/fingerprint_sevice.dart';
 
 class LoginLink extends StatelessWidget {
   const LoginLink({super.key});
@@ -17,7 +18,11 @@ class LoginLink extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            //todo: mohand
+            FingerprintService.requestBiometric().then((value) {
+              if (value) {
+                //todo: mohamd
+              }
+            });
           },
           child: Text(
             'Login',

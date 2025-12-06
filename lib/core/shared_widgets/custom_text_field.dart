@@ -54,30 +54,45 @@ class CustomTextField extends StatelessWidget {
         fillColor: Colors.transparent,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: colorScheme.primary, width: 2),
+          borderSide: BorderSide(
+            color: colorScheme.outline,
+            width: 1,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: colorScheme.primary, width: 1),
+          borderSide: BorderSide(
+            color: colorScheme.outline,
+            width: 1,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: colorScheme.primary, width: 1.5),
+          borderSide: BorderSide(
+            color: colorScheme.primary,
+            width: 2,
+          ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppExtraColors.warning, width: 1),
+          borderSide: const BorderSide(
+            color: AppExtraColors.danger,
+            width: 1,
+          ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
             color: AppExtraColors.danger,
-            width: 1.5,
+            width: 2,
           ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppExtraColors.gray, width: 1),
+          borderSide: BorderSide(
+            color: colorScheme.outline.withValues(alpha: 0.5),
+            width: 1,
+          ),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

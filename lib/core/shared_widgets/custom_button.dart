@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     this.isOutlined = false,
     this.width,
-    this.height = 56,
+    this.height = 50,
     this.backgroundColor,
     this.textColor,
   });
@@ -33,12 +33,15 @@ class CustomButton extends StatelessWidget {
         child: OutlinedButton(
           onPressed: isLoading ? null : onPressed,
           style: OutlinedButton.styleFrom(
+            padding: EdgeInsets.zero,
+            minimumSize: Size.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             side: BorderSide(
               color: colorScheme.primary,
               width: 2,
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(30),
             ),
           ),
           child: isLoading
@@ -72,7 +75,7 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? colorScheme.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(30),
           ),
           elevation: 0,
         ),

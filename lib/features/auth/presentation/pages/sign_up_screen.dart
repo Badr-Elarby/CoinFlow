@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:team_7/core/theming/app_colors.dart';
+import 'package:team_7/features/auth/data/models/request_holder_signup.dart';
 import 'package:team_7/features/auth/presentation/cubit/sign_up_cubit.dart';
 import 'package:team_7/features/auth/presentation/widgets/background_decoration.dart';
 import 'package:team_7/features/auth/presentation/widgets/login_link.dart';
@@ -37,14 +38,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _onSignUpPressed(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      context.read<SignUpCubit>().signUp(
+      final requestHolder = RequestHolderSignup(
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
         email: _emailController.text.trim(),
         password: _passwordController.text,
         confirmPassword: _confirmPasswordController.text,
-        phone: _phoneController.text,
+        phone: _phoneController.text.trim(),
       );
+      context.read<SignUpCubit>().signUp(requestHolder);
     }
   }
 
@@ -52,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.onPrimary,
+      backgroundColor: colorScheme.surfaceContainerHighest,
       body: BlocListener<SignUpCubit, SignUpState>(
         listener: (context, state) {
           switch (state) {
@@ -60,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               _showSuccessMessage(context);
               break;
             case SignUpError(:final errorMessage):
-              _showErrorMessage(context, errorMessage);
+              _showErrorMessage(context, errorMessage.status.errorMessage);
               break;
             case SignUpInitial():
             case SignUpLoading():
@@ -121,11 +123,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void _showErrorMessage(BuildContext context, String? message) {
+  void _showErrorMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message ?? 'Sign up failed'),
-        backgroundColor: AppExtraColors.warning,
+        content: Text(message),
+        backgroundColor: AppExtraColors.danger,
         behavior: SnackBarBehavior.floating,
       ),
     );
