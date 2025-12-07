@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:team_7/core/networking/api_result.dart';
-import 'package:team_7/core/networking/firebase_error_handler.dart';
 import 'package:team_7/features/auth/data/models/request_holder_signup.dart';
 import 'package:team_7/features/auth/data/models/user_model.dart';
 import 'package:team_7/features/auth/domain/repository/auth_data_source.dart';
@@ -8,9 +6,8 @@ import 'package:team_7/features/auth/domain/repository/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final AuthDataSource _authDataSource;
-  final FirebaseAuth firebaseAuth;
 
-  AuthRepoImpl(this._authDataSource, this.firebaseAuth);
+  AuthRepoImpl(this._authDataSource);
 
   @override
   Future<ApiResult<UserModel>> signup({
@@ -23,7 +20,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       return ApiResult.success(UserModel.fromFirebaseUser(currentUser));
     } catch (e) {
-      return ApiResult.error(FirebaseErrorHandler.handle(e));
+      return ApiResult.error(e);
     }
   }
 
@@ -33,7 +30,7 @@ class AuthRepoImpl implements AuthRepo {
       await _authDataSource.signOut();
       return ApiResult.success(null);
     } catch (e) {
-      return ApiResult.error(FirebaseErrorHandler.handle(e));
+      return ApiResult.error(e);
     }
   }
 }
