@@ -19,14 +19,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateAfterDelay() async {
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 4));
 
     if (!mounted) return;
 
-    try {
-      AppRouter.triggerOnboardingCheck();
-      context.go(AppRouter.splashRoute);
-    } catch (e) {}
+    context.go(AppRouter.loginRoute);
   }
 
   @override
