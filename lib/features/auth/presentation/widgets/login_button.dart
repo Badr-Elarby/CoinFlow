@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:team_7/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:team_7/core/shared_widgets/custom_button.dart';
 
-class RegisterButton extends StatelessWidget {
+class LoginButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const RegisterButton({super.key, required this.onPressed});
+  const LoginButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class RegisterButton extends StatelessWidget {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         return CustomButton(
-          text: 'Register',
+          text: 'Login',
           onPressed: onPressed,
           isLoading: state is AuthLoading,
           width: double.infinity,

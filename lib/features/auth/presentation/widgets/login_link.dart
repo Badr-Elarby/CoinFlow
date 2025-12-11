@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:team_7/core/theming/app-text.dart';
 import 'package:team_7/core/theming/app_colors.dart';
 import 'package:team_7/features/auth/domain/repository/fingerprint_sevice.dart';
+import 'package:team_7/features/home/presentation/pages/home_screen.dart';
 
 class LoginLink extends StatelessWidget {
   const LoginLink({super.key});
@@ -20,7 +21,9 @@ class LoginLink extends StatelessWidget {
           onTap: () {
             FingerprintService.requestBiometric().then((value) {
               if (value) {
-                //todo: mohamd
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
               }
             });
           },
