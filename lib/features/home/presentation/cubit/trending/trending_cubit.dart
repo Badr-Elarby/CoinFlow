@@ -18,3 +18,4 @@ class TrendingCubit extends Cubit<TrendingState> {
 }
 
 
+

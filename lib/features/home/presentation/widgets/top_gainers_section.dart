@@ -5,7 +5,6 @@ import 'package:team_7/core/networking/error_view.dart';
 import 'package:team_7/features/home/data/model/market_coin_model.dart';
 import 'package:team_7/features/home/presentation/cubit/market/market_cubit.dart';
 import 'package:team_7/features/home/presentation/cubit/market/market_state.dart';
-import 'package:team_7/features/home/presentation/widgets/section_loading.dart';
 import 'package:team_7/features/home/presentation/widgets/top_gainers.dart';
 
 class TopGainersSection extends StatelessWidget {
@@ -19,7 +18,9 @@ class TopGainersSection extends StatelessWidget {
       builder: (context, state) {
         return switch (state) {
           MarketInitial() => const SizedBox.shrink(),
-          MarketLoading() => const SectionLoading(),
+          MarketLoading() => const Center(
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
           MarketError(:final error) => ErrorView(
             error: error.errorMessage,
             onPressed: () => context.read<MarketCubit>().fetchMarketCoins(),

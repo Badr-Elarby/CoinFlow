@@ -5,7 +5,6 @@ import 'package:team_7/core/networking/error_view.dart';
 import 'package:team_7/features/home/presentation/cubit/global_data/global_data_cubit.dart';
 import 'package:team_7/features/home/presentation/cubit/global_data/global_data_state.dart';
 import 'package:team_7/features/home/presentation/widgets/market_overview.dart';
-import 'package:team_7/features/home/presentation/widgets/section_loading.dart';
 
 class MarketOverviewSection extends StatelessWidget {
   const MarketOverviewSection({super.key});
@@ -16,7 +15,9 @@ class MarketOverviewSection extends StatelessWidget {
       builder: (context, state) {
         return switch (state) {
           GlobalDataInitial() => const SizedBox.shrink(),
-          GlobalDataLoading() => const SectionLoading(),
+          GlobalDataLoading() => const Center(
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
           GlobalDataError(:final error) => ErrorView(
             error: error.errorMessage,
             onPressed: () => context.read<GlobalDataCubit>().fetchGlobalData(),
