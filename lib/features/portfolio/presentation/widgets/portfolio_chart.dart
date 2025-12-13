@@ -153,5 +153,7 @@ class DonutChartPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant DonutChartPainter oldDelegate) {
+    return oldDelegate.total != total || oldDelegate.holdings != holdings;
+  }
 }

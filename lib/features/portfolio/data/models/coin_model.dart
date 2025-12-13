@@ -40,31 +40,16 @@ class CoinModel {
       name: json['name'] as String,
       image: json['image'] as String,
       currentPrice: (json['current_price'] as num).toDouble(),
-      marketCap: json['market_cap'] != null
-          ? (json['market_cap'] as num).toDouble()
-          : null,
+      marketCap: (json['market_cap'] as num?)?.toDouble(),
       marketCapRank: json['market_cap_rank'] as int?,
-      totalVolume: json['total_volume'] != null
-          ? (json['total_volume'] as num).toDouble()
-          : null,
-      high24h: json['high_24h'] != null
-          ? (json['high_24h'] as num).toDouble()
-          : null,
-      low24h: json['low_24h'] != null
-          ? (json['low_24h'] as num).toDouble()
-          : null,
-      priceChange24h: json['price_change_24h'] != null
-          ? (json['price_change_24h'] as num).toDouble()
-          : null,
-      priceChangePercentage24h: json['price_change_percentage_24h'] != null
-          ? (json['price_change_percentage_24h'] as num).toDouble()
-          : null,
-      circulatingSupply: json['circulating_supply'] != null
-          ? (json['circulating_supply'] as num).toDouble()
-          : null,
-      totalSupply: json['total_supply'] != null
-          ? (json['total_supply'] as num).toDouble()
-          : null,
+      totalVolume: (json['total_volume'] as num?)?.toDouble(),
+      high24h: (json['high_24h'] as num?)?.toDouble(),
+      low24h: (json['low_24h'] as num?)?.toDouble(),
+      priceChange24h: (json['price_change_24h'] as num?)?.toDouble(),
+      priceChangePercentage24h: (json['price_change_percentage_24h'] as num?)
+          ?.toDouble(),
+      circulatingSupply: (json['circulating_supply'] as num?)?.toDouble(),
+      totalSupply: (json['total_supply'] as num?)?.toDouble(),
       lastUpdated: json['last_updated'] as String?,
     );
   }

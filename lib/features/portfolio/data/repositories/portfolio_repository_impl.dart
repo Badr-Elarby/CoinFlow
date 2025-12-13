@@ -37,10 +37,10 @@ class PortfolioRepositoryImpl implements PortfolioRepository {
         coinIds: coinIds,
       );
 
-      // Calculate total value and allocations
+      // First pass: Calculate totals and prepare allocation data
       double totalValue = 0;
       double totalDailyChange = 0;
-      List<HoldingAllocation> allocations = [];
+      final allocationData = <Map<String, dynamic>>[];
 
       for (final holding in _userHoldings) {
         final coinId = holding['coinId'] as String;
@@ -58,24 +58,21 @@ class PortfolioRepositoryImpl implements PortfolioRepository {
         totalValue += value;
         totalDailyChange += dailyChange;
 
-        allocations.add(
-          HoldingAllocation(
-            coinId: coinId,
-            symbol: holding['symbol'] as String,
-            value: value,
-            percentage: 0, // Will be calculated after total is known
-          ),
-        );
+        allocationData.add({
+          'coinId': coinId,
+          'symbol': holding['symbol'] as String,
+          'value': value,
+        });
       }
 
-      // Calculate percentages
-      allocations = allocations.map((allocation) {
+      // Second pass: Build final allocations with calculated percentages
+      final allocations = allocationData.map((data) {
         return HoldingAllocation(
-          coinId: allocation.coinId,
-          symbol: allocation.symbol,
-          value: allocation.value,
+          coinId: data['coinId'] as String,
+          symbol: data['symbol'] as String,
+          value: data['value'] as double,
           percentage: totalValue > 0
-              ? ((allocation.value / totalValue) * 100).toDouble()
+              ? (((data['value'] as double) / totalValue) * 100)
               : 0.0,
         );
       }).toList();

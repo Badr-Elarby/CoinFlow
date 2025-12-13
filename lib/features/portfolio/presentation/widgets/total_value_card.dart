@@ -101,7 +101,10 @@ class _CircleGroup extends StatelessWidget {
 
     final sizes = [260.0, 200.0, 140.0]; // Large, Mid, Small
 
-    return SizedBox.shrink(
+    // Provide explicit bounds for Stack (largest circle size)
+    return SizedBox(
+      width: sizes[0],
+      height: sizes[0],
       child: Stack(
         alignment: Alignment.center,
         clipBehavior: Clip.none,

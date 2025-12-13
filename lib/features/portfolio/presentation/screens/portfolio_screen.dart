@@ -111,7 +111,10 @@ class PortfolioScreen extends StatelessWidget {
                         // My Holdings Section - with real data
                         const SectionHeader(title: 'My Holdings'),
                         AppSpacing.h16,
-                        HoldingsList(coins: state.coins),
+                        HoldingsList(
+                          balance: state.balance,
+                          coins: state.coins,
+                        ),
                         AppSpacing.h24,
 
                         // Trending Coins Section

@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class PortfolioBalanceModel {
   final double totalValue;
   final double dailyChange;
@@ -14,7 +16,8 @@ class PortfolioBalanceModel {
   bool get isDailyPositive => dailyChange >= 0;
 
   String get formattedTotalValue {
-    return '\$${_formatNumber(totalValue)}';
+    final formatter = NumberFormat('#,##0.00');
+    return '\$${formatter.format(totalValue)}';
   }
 
   String get formattedDailyChange {
@@ -25,22 +28,6 @@ class PortfolioBalanceModel {
   String get formattedDailyChangePercentage {
     final sign = dailyChangePercentage >= 0 ? '+' : '';
     return '$sign${dailyChangePercentage.toStringAsFixed(2)}%';
-  }
-
-  String _formatNumber(double value) {
-    final parts = value.toStringAsFixed(2).split('.');
-    final integerPart = parts[0];
-    final decimalPart = parts[1];
-
-    String formatted = '';
-    for (int i = 0; i < integerPart.length; i++) {
-      if (i > 0 && (integerPart.length - i) % 3 == 0) {
-        formatted += ',';
-      }
-      formatted += integerPart[i];
-    }
-
-    return '$formatted.$decimalPart';
   }
 }
 

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:team_7/core/responsive/app_spacing.dart';
 import 'package:team_7/core/theming/app_colors.dart';
+import 'package:team_7/features/portfolio/data/models/portfolio_balance_model.dart';
 import 'package:team_7/features/portfolio/data/models/coin_model.dart';
 import 'package:team_7/features/portfolio/presentation/widgets/holding_card.dart';
 
 class HoldingsList extends StatelessWidget {
+  final PortfolioBalanceModel balance;
   final List<CoinModel> coins;
 
-  const HoldingsList({super.key, required this.coins});
+  const HoldingsList({super.key, required this.balance, required this.coins});
 
   // Map coin IDs to colors
   Color _getCoinColor(String coinId) {
@@ -37,7 +39,7 @@ class HoldingsList extends StatelessWidget {
     }
   }
 
-  // Get static quantity for each coin (will be replaced with real data later)
+  // Get static quantity for display (from repository holdings)
   double _getQuantity(String coinId) {
     switch (coinId.toLowerCase()) {
       case 'bitcoin':
@@ -54,27 +56,28 @@ class HoldingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: coins.map((coin) {
-        final quantity = _getQuantity(coin.id);
-        final value = quantity * coin.currentPrice;
-        final totalValue = coins.fold<double>(
-          0,
-          (sum, c) => sum + (_getQuantity(c.id) * c.currentPrice),
+      children: balance.allocations.map((allocation) {
+        // Find matching coin for display data
+        final coin = coins.firstWhere(
+          (c) => c.id == allocation.coinId,
+          orElse: () => coins.first, // Fallback
         );
-        final percentage = (value / totalValue) * 100;
+
+        final quantity = _getQuantity(allocation.coinId);
 
         return Padding(
           padding: EdgeInsets.only(bottom: AppSpacing.h12.height!),
           child: HoldingCard(
             name: coin.name,
-            symbol: coin.symbol.toUpperCase(),
+            symbol: allocation.symbol.toUpperCase(),
             quantity: quantity.toStringAsFixed(2),
-            value: '\$${value.toStringAsFixed(2)}',
-            percentage: '${percentage.toStringAsFixed(0)}%',
+            value: allocation.formattedValue,
+            percentage: allocation.formattedPercentage,
             change: coin.formattedPriceChange,
             changePercent: coin.formattedPercentageChange,
-            iconColor: _getCoinColor(coin.id),
-            icon: _getCoinIcon(coin.id),
+            iconColor: _getCoinColor(allocation.coinId),
+            icon: _getCoinIcon(allocation.coinId),
+            isPositive: coin.isPriceIncreasing,
           ),
         );
       }).toList(),

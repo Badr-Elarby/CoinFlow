@@ -15,6 +15,7 @@ class HoldingCard extends StatelessWidget {
   final String changePercent;
   final Color iconColor;
   final String icon;
+  final bool isPositive;
 
   const HoldingCard({
     super.key,
@@ -27,6 +28,7 @@ class HoldingCard extends StatelessWidget {
     required this.changePercent,
     required this.iconColor,
     required this.icon,
+    required this.isPositive,
   });
 
   @override
@@ -121,8 +123,22 @@ class HoldingCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(change, style: AppText.success14Medium),
-                        Text(changePercent, style: AppText.success12Regular),
+                        Text(
+                          change,
+                          style: isPositive
+                              ? AppText.success14Medium
+                              : AppText.white14Regular.copyWith(
+                                  color: AppExtraColors.danger,
+                                ),
+                        ),
+                        Text(
+                          changePercent,
+                          style: isPositive
+                              ? AppText.success12Regular
+                              : AppText.gray12Regular.copyWith(
+                                  color: AppExtraColors.danger,
+                                ),
+                        ),
                       ],
                     ),
                   ],
