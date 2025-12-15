@@ -23,6 +23,8 @@ extension ThemeContextExtension on BuildContext {
 
   Color get background => Theme.of(this).colorScheme.surfaceContainerHighest;
 
+  Color get shimmer => Theme.of(this).colorScheme.onSurfaceVariant;
+
   Brightness get brightness => Theme.of(this).brightness;
 
   bool get isDarkMode => brightness == Brightness.dark;
