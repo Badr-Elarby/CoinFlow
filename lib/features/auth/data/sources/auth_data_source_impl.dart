@@ -22,6 +22,21 @@ class AuthDataSourceImpl implements AuthDataSource {
   }
 
   @override
+  Future<User> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    if (userCredential.user == null) {
+      throw Exception('User sign in failed');
+    }
+    return userCredential.user!;
+  }
+
+  @override
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
     throw Exception('User sign out failed');

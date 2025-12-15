@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:team_7/core/networking/api_constant.dart';
 import 'package:team_7/core/networking/app_interceptor.dart';
 
 class DioFactory {
@@ -10,7 +11,13 @@ class DioFactory {
     if (_dio == null) {
       Duration timeOut = const Duration(seconds: 30);
 
-      final dio = Dio();
+      final dio = Dio(
+        BaseOptions(
+          baseUrl: ApiConstants.baseUrl,
+          connectTimeout: timeOut,
+          receiveTimeout: timeOut,
+        ),
+      );
       dio
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;

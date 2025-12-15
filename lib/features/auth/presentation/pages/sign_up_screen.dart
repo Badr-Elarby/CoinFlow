@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:team_7/core/theming/app_colors.dart';
 import 'package:team_7/features/auth/data/models/request_holder_signup.dart';
-import 'package:team_7/features/auth/presentation/cubit/sign_up_cubit.dart';
+import 'package:team_7/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:team_7/features/auth/presentation/widgets/background_decoration.dart';
 import 'package:team_7/features/auth/presentation/widgets/login_link.dart';
 import 'package:team_7/features/auth/presentation/widgets/register_button.dart';
@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         confirmPassword: _confirmPasswordController.text,
         phone: _phoneController.text.trim(),
       );
-      context.read<SignUpCubit>().signUp(requestHolder);
+      context.read<AuthCubit>().signUp(requestHolder);
     }
   }
 
@@ -55,17 +55,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: colorScheme.surfaceContainerHighest,
-      body: BlocListener<SignUpCubit, SignUpState>(
+      body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           switch (state) {
-            case SignUpSuccess():
+            case AuthSuccess():
               _showSuccessMessage(context);
               break;
-            case SignUpError(:final errorMessage):
-              _showErrorMessage(context, errorMessage.status.errorMessage);
+            case AuthError(:final errorMessage):
+              _showErrorMessage(context, errorMessage.errorMessage);
               break;
-            case SignUpInitial():
-            case SignUpLoading():
+            case AuthInitial():
+            case AuthLoading():
               break;
           }
         },

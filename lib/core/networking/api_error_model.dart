@@ -12,6 +12,10 @@ class ApiErrorModel {
       _$ApiErrorModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
+
+  String get errorMessage => status.errorMessage;
+
+  int get errorCode => status.errorCode;
 }
 
 @JsonSerializable()
