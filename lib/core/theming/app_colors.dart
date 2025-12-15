@@ -63,6 +63,7 @@ class AppExtraColors {
 
   static const Color blueAccent = Color(0xFF4766F9);
   static const Color darkNavyIcon = Color(0xFF1E1F4B);
+  static const Color navyBlue = Color(0xFF1D3A70);
 
   // Success
   static const Color success = Color(0xFF00CB6A);
