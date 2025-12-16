@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:team_7/core/helpers/shared_pref_helper.dart';
 import 'package:team_7/features/splash/presentation/screens/splash_screen.dart';
 import 'package:team_7/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:team_7/features/settings/presentation/screens/settings_screen.dart';
 
 class AppRouter {
   AppRouter._();
@@ -11,6 +12,7 @@ class AppRouter {
   static const String onboardingRoute = '/onboarding';
   static const String loginRoute = '/login';
   static const String homeRoute = '/home';
+  static const String settingsRoute = '/settings';
 
   static const String onboardingCompletedKey = 'onboarding_completed';
 
@@ -59,6 +61,12 @@ class AppRouter {
         name: 'home',
         pageBuilder: (context, state) =>
             MaterialPage(key: state.pageKey, child: const Placeholder()),
+      ),
+      GoRoute(
+        path: settingsRoute,
+        name: 'settings',
+        pageBuilder: (context, state) =>
+            MaterialPage(key: state.pageKey, child: const SettingsScreen()),
       ),
     ],
 
