@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:team_7/core/networking/api_constant.dart';
 import 'package:team_7/core/networking/api_consumer.dart';
 
 class DioConsumer implements ApiConsumer {
   final Dio dio;
-  DioConsumer({required this.dio});
+
+  DioConsumer({required this.dio}) {
+    dio.options.baseUrl = ApiConstants.baseUrl;
+  }
 
   @override
   Future<dynamic> get({
@@ -52,7 +56,10 @@ class DioConsumer implements ApiConsumer {
     required String path,
     Map<String, dynamic>? queryParameters,
   }) async {
-    final response = await dio.delete(path, queryParameters: queryParameters);
+    final response = await dio.delete(
+      path,
+      queryParameters: queryParameters,
+    );
     return response.data;
   }
 
@@ -70,7 +77,6 @@ class DioConsumer implements ApiConsumer {
     return response.data;
   }
 }
-
 
 
 
