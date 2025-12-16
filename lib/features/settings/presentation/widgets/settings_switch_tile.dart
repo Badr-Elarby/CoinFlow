@@ -30,7 +30,10 @@ class SettingsSwitchTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.surface,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: context.outline.withOpacity(0.1), width: 1),
+          border: Border.all(
+            color: context.outline.withValues(alpha: 0.1),
+            width: 1,
+          ),
         ),
         child: Row(
           children: [

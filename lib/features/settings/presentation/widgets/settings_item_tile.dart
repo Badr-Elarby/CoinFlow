@@ -32,7 +32,7 @@ class SettingsItemTile extends StatelessWidget {
             color: context.surface,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: context.outline.withOpacity(0.1),
+              color: context.outline.withValues(alpha: 0.1),
               width: 1,
             ),
           ),
@@ -64,7 +64,7 @@ class SettingsItemTile extends StatelessWidget {
               // Arrow Icon
               Icon(
                 Icons.chevron_right,
-                color: context.onSurface.withOpacity(0.5),
+                color: context.onSurface.withValues(alpha: 0.5),
                 size: 24,
               ),
             ],

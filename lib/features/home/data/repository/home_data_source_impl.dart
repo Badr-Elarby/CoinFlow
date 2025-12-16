@@ -17,13 +17,25 @@ class HomeDataSourceImpl implements HomeDataSource {
 
   @override
   Future<List<MarketCoinModel>> getMarketCoins() async {
-    final response = await apiConsumer.get(path: ApiConstants.markets);
-    return response.map((e) => MarketCoinModel.fromJson(e)).toList();
+    final response = await apiConsumer.get(
+      path: ApiConstants.markets,
+      queryParameters: {
+        'vs_currency': 'usd',
+        'order': 'market_cap_desc',
+        'per_page': 100,
+        'page': 1,
+        'sparkline': false,
+      },
+    );
+    return (response as List).map((e) => MarketCoinModel.fromJson(e)).toList();
   }
 
   @override
   Future<List<TrendingCoinModel>> getTrendingCoins() async {
     final response = await apiConsumer.get(path: ApiConstants.trending);
-    return response.map((e) => TrendingCoinModel.fromJson(e)).toList();
+    final coins = response['coins'] as List;
+    return coins
+        .map((e) => TrendingCoinModel.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }

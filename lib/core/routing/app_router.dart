@@ -7,10 +7,12 @@ import 'package:team_7/core/routing/routes.dart';
 import 'package:team_7/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:team_7/features/auth/presentation/pages/sign_in_screen.dart';
 import 'package:team_7/features/auth/presentation/pages/sign_up_screen.dart';
+import 'package:team_7/features/coin_details/presentation/screens/coin_details_screen.dart';
 import 'package:team_7/features/home/presentation/cubit/global_data/global_data_cubit.dart';
 import 'package:team_7/features/home/presentation/cubit/market/market_cubit.dart';
 import 'package:team_7/features/home/presentation/cubit/trending/trending_cubit.dart';
 import 'package:team_7/features/home/presentation/pages/home_screen.dart';
+import 'package:team_7/features/market/presentation/screens/market_screen.dart';
 import 'package:team_7/features/portfolio/presentation/cubits/portfolio_cubit/portfolio_cubit.dart';
 import 'package:team_7/features/portfolio/presentation/screens/portfolio_screen.dart';
 import 'package:team_7/features/splash/presentation/screens/splash_screen.dart';
@@ -22,7 +24,7 @@ class AppRouter {
   static final AuthCubit authCubit = getIt<AuthCubit>();
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.splashRoute,
+    initialLocation: Routes.marketRoute,
 
     redirect: (context, state) async {
       final path = state.uri.path;
@@ -106,6 +108,18 @@ class AppRouter {
             create: (context) => getIt<PortfolioCubit>()..loadPortfolio(),
             child: const PortfolioScreen(),
           ),
+        ),
+      ),
+      GoRoute(
+        path: Routes.marketRoute,
+        pageBuilder: (context, state) =>
+            MaterialPage(key: state.pageKey, child: const MarketScreen()),
+      ),
+      GoRoute(
+        path: Routes.searchRoute,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: CoinDetailsScreen(coinId: state.extra as String),
         ),
       ),
     ],

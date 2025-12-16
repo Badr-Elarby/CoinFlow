@@ -14,7 +14,6 @@ import 'package:team_7/features/auth/presentation/widgets/login_button.dart';
 import 'package:team_7/features/auth/presentation/widgets/login_form.dart';
 import 'package:team_7/features/auth/presentation/widgets/or_login_with.dart';
 import 'package:team_7/features/auth/presentation/widgets/remember_forgot_section.dart';
-import 'package:team_7/features/home/presentation/pages/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -110,11 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 value,
                               ) {
                                 if (value) {
-                                  Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) => const HomeScreen(),
-                                    ),
-                                  );
+                                  context.go(Routes.homeRoute);
                                 }
                               });
                             },

@@ -44,7 +44,9 @@ class TopGainerItem extends StatelessWidget {
                 child: coin.image != null
                     ? Image.network(coin.image!, width: 24, height: 24)
                     : Text(
-                        coin.symbol![0],
+                        (coin.symbol?.isNotEmpty ?? false)
+                            ? coin.symbol![0].toUpperCase()
+                            : '?',
                         style: TextStyle(
                           color: PriceChangeUtils.getColor(
                             coin.priceChangePercentage24h,
@@ -61,7 +63,7 @@ class TopGainerItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    coin.name!,
+                    coin.name ?? 'Unknown',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
@@ -70,7 +72,7 @@ class TopGainerItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    coin.symbol!,
+                    coin.symbol ?? '',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -84,7 +86,7 @@ class TopGainerItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  coin.currentPrice!.toString(),
+                  coin.currentPrice?.toString() ?? '0.00',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
@@ -93,7 +95,7 @@ class TopGainerItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  '${coin.priceChangePercentage24h!.toStringAsFixed(2)}%',
+                  '${(coin.priceChangePercentage24h ?? 0).toStringAsFixed(2)}%',
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,

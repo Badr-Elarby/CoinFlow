@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:team_7/core/theming/app_text.dart';
+import 'package:go_router/go_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 import 'package:team_7/core/theming/app_colors.dart';
+import 'package:team_7/core/theming/app_text.dart';
 import 'package:team_7/features/auth/domain/repository/fingerprint_sevice.dart';
-import 'package:team_7/features/home/presentation/pages/home_screen.dart';
 
 class LoginLink extends StatelessWidget {
   const LoginLink({super.key});
@@ -21,9 +22,9 @@ class LoginLink extends StatelessWidget {
           onTap: () {
             FingerprintService.requestBiometric().then((value) {
               if (value) {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
+                if (context.mounted) {
+                  context.go(Routes.homeRoute);
+                }
               }
             });
           },

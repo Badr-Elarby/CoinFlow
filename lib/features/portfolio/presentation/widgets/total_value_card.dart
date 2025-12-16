@@ -34,7 +34,7 @@ class TotalValueCard extends StatelessWidget {
                   Text(
                     'Total Value',
                     style: AppText.white14Regular.copyWith(
-                      color: AppExtraColors.white.withOpacity(0.8),
+                      color: AppExtraColors.white.withValues(alpha: 0.8),
                     ),
                   ),
                   AppSpacing.h8,
@@ -130,7 +130,7 @@ class _CircleGroup extends StatelessWidget {
         height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: color.withOpacity(opacity),
+          color: color.withValues(alpha: opacity),
         ),
       ),
     );

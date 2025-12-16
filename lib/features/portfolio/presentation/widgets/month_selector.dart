@@ -47,7 +47,7 @@ class _MonthSelectorState extends State<MonthSelector> {
                 border: isSelected
                     ? null
                     : Border.all(
-                        color: context.outline.withOpacity(0.3),
+                        color: context.outline.withValues(alpha: 0.3),
                         width: 1,
                       ),
               ),
@@ -60,7 +60,7 @@ class _MonthSelectorState extends State<MonthSelector> {
                         ? (context.isDarkMode
                               ? context.onPrimary
                               : AppExtraColors.white)
-                        : context.onSurface.withOpacity(0.6),
+                        : context.onSurface.withValues(alpha: 0.6),
                   ),
                 ),
               ),

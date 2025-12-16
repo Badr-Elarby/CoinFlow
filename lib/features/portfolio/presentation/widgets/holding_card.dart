@@ -38,7 +38,10 @@ class HoldingCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: context.outline.withOpacity(0.2), width: 1),
+        border: Border.all(
+          color: context.outline.withValues(alpha: 0.2),
+          width: 1,
+        ),
       ),
       child: Row(
         children: [
@@ -47,7 +50,7 @@ class HoldingCard extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
+              color: iconColor.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Center(

@@ -21,9 +21,9 @@ class UserProfileHeader extends StatelessWidget {
             height: context.wp(20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppExtraColors.gray.withOpacity(0.2),
+              color: AppExtraColors.gray.withValues(alpha: 0.2),
               border: Border.all(
-                color: context.outline.withOpacity(0.3),
+                color: context.outline.withValues(alpha: 0.3),
                 width: 2,
               ),
             ),
@@ -31,7 +31,7 @@ class UserProfileHeader extends StatelessWidget {
               child: Icon(
                 Icons.person,
                 size: context.wp(12),
-                color: context.primary.withOpacity(0.5),
+                color: context.primary.withValues(alpha: 0.5),
               ),
             ),
           ),
