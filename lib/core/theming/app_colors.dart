@@ -10,7 +10,6 @@ class AppColors {
   static const Color _lightOnPrimary = Colors.white;
   static const Color _lightOnSurface = Color(0xFF18191F); // Neutral Text
   static const Color _lightSecondaryText = Color(0xFF8E949A);
-  static const Color _lightOutline = Color(0xFFCBD5E1);
 
   // Dark Theme Palette
   static const Color darkBackground = Color(0xFF0D0D0D);

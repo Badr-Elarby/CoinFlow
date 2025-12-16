@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_7/core/responsive/size_extensions.dart';
+import 'package:team_7/core/routing/app_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 
 class OnboardingActionButtons extends StatelessWidget {
   const OnboardingActionButtons({super.key});
 
-  // Future<void> _completeOnboarding(BuildContext context) async {
-  //   await AppRouter.completeOnboarding();
-  //   if (context.mounted) {
-  //     context.go(AppRouter.loginRoute);
-  //   }
-  // }
+  Future<void> _completeOnboarding(BuildContext context) async {
+    await AppRouter.completeOnboarding();
+    if (context.mounted) {
+      context.go(Routes.signInRoute);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class OnboardingActionButtons extends StatelessWidget {
             width: double.infinity,
             height: 56,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _completeOnboarding(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryColor,
                 foregroundColor: onPrimary,
@@ -46,7 +49,7 @@ class OnboardingActionButtons extends StatelessWidget {
             width: double.infinity,
             height: 56,
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () => context.go(Routes.signUpRoute),
               style: OutlinedButton.styleFrom(
                 side: BorderSide(color: primaryColor, width: 1.5),
                 foregroundColor: primaryColor,

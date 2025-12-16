@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_7/core/responsive/size_extensions.dart';
-import 'package:team_7/core/routing/app_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 import 'package:team_7/core/theming/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (!mounted) return;
 
-    context.go(AppRouter.loginRoute);
+    context.go(Routes.signInRoute);
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:team_7/core/routing/app_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 import 'package:team_7/features/market/presentation/cubit/market_cubit.dart';
 import 'package:team_7/features/market/presentation/cubit/search_cubit.dart';
 import 'package:team_7/features/market/presentation/widgets/market_content_list.dart';
@@ -18,7 +18,9 @@ class MarketContent extends StatelessWidget {
       builder: (context, marketState) {
         return switch (marketState) {
           MarketLoading() => MarketLoadingState(
-            itemCount: marketState.coins.isEmpty ? 10 : marketState.coins.length,
+            itemCount: marketState.coins.isEmpty
+                ? 10
+                : marketState.coins.length,
           ),
           MarketError() => MarketErrorState(
             error: marketState.error,
@@ -38,7 +40,7 @@ class MarketContent extends StatelessWidget {
               return MarketCoinList(
                 coins: coins,
                 onCoinTap: (coin) {
-                  context.push(AppRouter.coinDetailsRoute, extra: coin);
+                  context.push(Routes.homeRoute, extra: coin);
                 },
               );
             },
