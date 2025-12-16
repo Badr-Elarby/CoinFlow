@@ -20,8 +20,8 @@ CoinDetailsModel _$CoinDetailsModelFromJson(Map<String, dynamic> json) =>
               ?.toDouble(),
       marketCap: (CoinDetailsModel._readMarketCap(json, 'marketCap') as num?)
           ?.toDouble(),
-      volume24h:
-          (CoinDetailsModel._readVolume(json, 'volume24h') as num?)?.toDouble(),
+      volume24h: (CoinDetailsModel._readVolume(json, 'volume24h') as num?)
+          ?.toDouble(),
       circulatingSupply:
           (CoinDetailsModel._readCirculatingSupply(json, 'circulatingSupply')
                   as num?)
@@ -31,18 +31,3 @@ CoinDetailsModel _$CoinDetailsModelFromJson(Map<String, dynamic> json) =>
       description:
           CoinDetailsModel._readDescription(json, 'description') as String?,
     );
-
-Map<String, dynamic> _$CoinDetailsModelToJson(CoinDetailsModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'symbol': instance.symbol,
-      'image': instance.image,
-      'currentPrice': instance.currentPrice,
-      'priceChange24h': instance.priceChange24h,
-      'marketCap': instance.marketCap,
-      'volume24h': instance.volume24h,
-      'circulatingSupply': instance.circulatingSupply,
-      'maxSupply': instance.maxSupply,
-      'description': instance.description,
-    };

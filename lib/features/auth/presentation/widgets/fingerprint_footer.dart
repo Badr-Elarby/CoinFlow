@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team_7/core/theming/app-text.dart';
+import 'package:team_7/core/theming/app_text.dart';
 
 class FingerprintFooter extends StatelessWidget {
   const FingerprintFooter({super.key});

@@ -18,3 +18,5 @@ class GlobalDataCubit extends Cubit<GlobalDataState> {
 }
 
 
+
+

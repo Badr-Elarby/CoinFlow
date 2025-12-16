@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team_7/core/theming/app-text.dart';
+import 'package:team_7/core/theming/app_text.dart';
 
 class OrLoginWith extends StatelessWidget {
   const OrLoginWith({super.key});

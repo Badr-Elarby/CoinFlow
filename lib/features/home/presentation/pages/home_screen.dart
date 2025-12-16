@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:team_7/core/di/dependency_injection.dart';
 import 'package:team_7/features/home/presentation/cubit/global_data/global_data_cubit.dart';
 import 'package:team_7/features/home/presentation/cubit/market/market_cubit.dart';
 import 'package:team_7/features/home/presentation/cubit/trending/trending_cubit.dart';
@@ -15,18 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => getIt<GlobalDataCubit>()..fetchGlobalData(),
-        ),
-        BlocProvider(
-          create: (_) => getIt<TrendingCubit>()..fetchTrendingCoins(),
-        ),
-        BlocProvider(create: (_) => getIt<MarketCubit>()..fetchMarketCoins()),
-      ],
-      child: const _HomeScreenContent(),
-    );
+    return const _HomeScreenContent();
   }
 }
 

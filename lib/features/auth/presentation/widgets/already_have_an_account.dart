@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:team_7/core/theming/app-text.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_7/core/theming/app_colors.dart';
-import 'package:team_7/features/auth/presentation/pages/sign_up_screen.dart';
+import 'package:team_7/core/theming/app_text.dart';
+import 'package:team_7/core/routing/routes.dart';
 
 class AlreadyHaveAnAccount extends StatelessWidget {
   const AlreadyHaveAnAccount({super.key});
@@ -10,9 +11,7 @@ class AlreadyHaveAnAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(
-          context,
-        ).push(MaterialPageRoute(builder: (context) => const SignUpScreen()));
+        context.go(Routes.signUpRoute);
       },
       child: Text.rich(
         TextSpan(

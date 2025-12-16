@@ -12,9 +12,3 @@ MarketChartResponse _$MarketChartResponseFromJson(Map<String, dynamic> json) =>
           .map((e) => (e as List<dynamic>).map((e) => e as num).toList())
           .toList(),
     );
-
-Map<String, dynamic> _$MarketChartResponseToJson(
-        MarketChartResponse instance) =>
-    <String, dynamic>{
-      'prices': instance.prices,
-    };

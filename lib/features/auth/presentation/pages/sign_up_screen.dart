@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 import 'package:team_7/core/theming/app_colors.dart';
 import 'package:team_7/features/auth/data/models/request_holder_signup.dart';
 import 'package:team_7/features/auth/presentation/cubit/auth_cubit.dart';
@@ -112,15 +114,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _showSuccessMessage(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Account created successfully! Please verify your email.',
-        ),
-        backgroundColor: AppExtraColors.success,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Account created successfully! Please verify your email.',
+            ),
+            backgroundColor: AppExtraColors.success,
+            behavior: SnackBarBehavior.floating,
+          ),
+        )
+        .closed
+        .then((_) {
+          if (context.mounted) {
+            context.go(Routes.signInRoute);
+          }
+        });
   }
 
   void _showErrorMessage(BuildContext context, String message) {

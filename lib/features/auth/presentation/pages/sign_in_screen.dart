@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:team_7/core/constants/assets_paths.dart';
-import 'package:team_7/core/theming/app-text.dart';
+import 'package:team_7/core/routing/routes.dart';
+import 'package:team_7/core/theming/app_text.dart';
 import 'package:team_7/features/auth/data/models/sign_in_request_model.dart';
 import 'package:team_7/features/auth/domain/repository/fingerprint_sevice.dart';
 import 'package:team_7/features/auth/presentation/cubit/auth_cubit.dart';
@@ -40,9 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
       listener: (context, state) {
         switch (state) {
           case AuthSuccess():
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const HomeScreen()),
-            );
+            context.go(Routes.homeRoute);
             break;
           case AuthError(:final errorMessage):
             ScaffoldMessenger.of(context).showSnackBar(
