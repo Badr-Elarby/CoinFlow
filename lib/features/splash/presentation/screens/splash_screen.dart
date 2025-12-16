@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:team_7/core/responsive/size_extensions.dart';
 import 'package:team_7/core/routing/routes.dart';
@@ -11,11 +12,34 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
   @override
   void initState() {
     super.initState();
+
+    // Initialize animation controller for the breathing effect
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 4),
+    )..repeat(reverse: true);
+
+    // Define scale range (subtle breathing)
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 3.1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
     _navigateAfterDelay();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   Future<void> _navigateAfterDelay() async {
@@ -34,13 +58,10 @@ class _SplashScreenState extends State<SplashScreen> {
         ? 'assets/images/splash_logo_dark.png'
         : 'assets/images/splash_logo_light.png';
 
-    final outerCircleAsset = isDark
-        ? 'assets/images/splash_circle_dark1.png'
-        : 'assets/images/splash_circle_light1.png';
-
-    final innerCircleAsset = isDark
-        ? 'assets/images/splash_circle_dark2.png'
-        : 'assets/images/splash_circle_light2.png';
+    // Use both SVGs for the background effect as requested
+    // splash_circle2 is larger (Outer), splash_circle1 is smaller (Inner)
+    const outerCircleSvg = 'assets/images/splash_circle2.svg';
+    const innerCircleSvg = 'assets/images/splash_circle1.svg';
 
     final colorScheme = isDark
         ? AppColors.darkColorScheme
@@ -55,29 +76,56 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Stack(
           alignment: Alignment.center,
           children: [
+            // Outer Circle (Larger) - Back Layer
             Positioned(
-              top: context.hp(9),
-              child: Image.asset(
-                outerCircleAsset,
-                width: context.wp(100),
-                height: context.hp(80),
-                fit: BoxFit.contain,
+              top: context.hp(010),
+              left: 0,
+              right: 0,
+              child: AnimatedBuilder(
+                animation: _controller,
+                builder: (context, child) {
+                  return Transform.scale(
+                    scale: _scaleAnimation.value,
+                    child: child,
+                  );
+                },
+                child: SvgPicture.asset(
+                  outerCircleSvg,
+                  width: context.wp(100),
+                  // Allow height to scale naturally
+                  placeholderBuilder: (context) => const SizedBox.shrink(),
+                ),
               ),
             ),
+
+            // Inner Circle (Smaller) - Middle Layer
             Positioned(
-              top: context.hp(22),
-              child: Image.asset(
-                innerCircleAsset,
-                width: context.wp(100),
-                height: context.hp(55),
-                fit: BoxFit.contain,
+              top: context.hp(28),
+              left: 0,
+              right: 0,
+              child: AnimatedBuilder(
+                animation: _controller,
+                builder: (context, child) {
+                  return Transform.scale(
+                    scale: _scaleAnimation.value,
+                    child: child,
+                  );
+                },
+                child: SvgPicture.asset(
+                  innerCircleSvg,
+                  width: context.wp(90),
+                  // Allow height to scale naturally
+                  placeholderBuilder: (context) => const SizedBox.shrink(),
+                ),
               ),
             ),
+
+            // App Logo
             Center(
               child: Image.asset(
                 logoAsset,
-                width: context.wp(35),
-                height: context.wp(35),
+                width: context.wp(30),
+                height: context.wp(30),
                 fit: BoxFit.contain,
               ),
             ),
