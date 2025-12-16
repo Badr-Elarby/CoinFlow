@@ -20,7 +20,11 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseAuth = getIt<FirebaseAuth>();
     final currentUser = firebaseAuth.currentUser;
-    final userName = currentUser?.displayName ?? 'Badr Elarby';
+    final userName =
+        (currentUser?.displayName != null &&
+            currentUser!.displayName!.isNotEmpty)
+        ? currentUser.displayName!
+        : 'User';
 
     return Scaffold(
       backgroundColor: context.background,

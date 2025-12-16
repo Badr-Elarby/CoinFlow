@@ -20,10 +20,10 @@ class CustomBottomNavBar extends StatelessWidget {
         ? AppColors.darkSurface
         : AppColors.lightSurface;
 
-    final activeIconColor = isDark ? Colors.white : AppExtraColors.darkNavyIcon;
+    final activeIconColor = context.primary;
 
     final inactiveIconColor = isDark
-        ? AppExtraColors.gray.withOpacity(0.6)
+        ? AppExtraColors.gray.withValues(alpha: 0.6)
         : AppExtraColors.gray;
 
     final activeLabelColor = isDark
@@ -32,8 +32,11 @@ class CustomBottomNavBar extends StatelessWidget {
 
     final inactiveLabelColor = AppExtraColors.gray;
 
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+
     return Container(
-      height: context.hp(10),
+      height: context.hp(9) + bottomPadding,
+      padding: EdgeInsets.only(bottom: bottomPadding),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: const BorderRadius.only(
@@ -42,7 +45,7 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.3 : 0.05),
+            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.05),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -145,29 +148,12 @@ class _NavItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Icon with active indicator
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  // Active indicator circle
-                  if (isActive)
-                    Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: AppExtraColors.blueAccent.withOpacity(0.15),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-
-                  // SVG Icon
-                  SvgPicture.asset(
-                    iconPath,
-                    width: 24,
-                    height: 24,
-                    colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
-                  ),
-                ],
+              // Icon
+              SvgPicture.asset(
+                iconPath,
+                width: 24,
+                height: 24,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
               ),
               SizedBox(height: context.hp(0.5)),
 

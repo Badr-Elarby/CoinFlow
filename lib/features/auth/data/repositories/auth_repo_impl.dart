@@ -18,6 +18,8 @@ class AuthRepoImpl implements AuthRepo {
       final currentUser = await _authDataSource.createUserWithEmailAndPassword(
         email: requestHolderSignup.email.trim(),
         password: requestHolderSignup.password,
+        displayName:
+            '${requestHolderSignup.firstName} ${requestHolderSignup.lastName}',
       );
       return ApiResult.success(UserModel.fromFirebaseUser(currentUser));
     } catch (e) {

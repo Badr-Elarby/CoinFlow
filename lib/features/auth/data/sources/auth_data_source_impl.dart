@@ -10,6 +10,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String displayName,
   }) async {
     final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
@@ -18,7 +19,10 @@ class AuthDataSourceImpl implements AuthDataSource {
     if (userCredential.user == null) {
       throw Exception('User creation failed');
     }
-    return userCredential.user!;
+
+    await userCredential.user!.updateDisplayName(displayName);
+    await userCredential.user!.reload();
+    return _firebaseAuth.currentUser!;
   }
 
   @override
@@ -39,6 +43,5 @@ class AuthDataSourceImpl implements AuthDataSource {
   @override
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
-    throw Exception('User sign out failed');
   }
 }

@@ -18,13 +18,14 @@ import 'package:team_7/features/portfolio/presentation/screens/portfolio_screen.
 import 'package:team_7/features/splash/presentation/screens/splash_screen.dart';
 import 'package:team_7/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:team_7/features/settings/presentation/screens/settings_screen.dart';
+import 'package:team_7/core/shared_widgets/custom_bottom_nav_bar.dart';
 
 class AppRouter {
   AppRouter._();
   static final AuthCubit authCubit = getIt<AuthCubit>();
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.marketRoute,
+    initialLocation: Routes.homeRoute,
 
     redirect: (context, state) async {
       final path = state.uri.path;
@@ -75,45 +76,80 @@ class AppRouter {
           ),
         ),
       ),
-      GoRoute(
-        path: Routes.homeRoute,
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (_) => getIt<GlobalDataCubit>()..fetchGlobalData(),
-              ),
-              BlocProvider(
-                create: (_) => getIt<TrendingCubit>()..fetchTrendingCoins(),
-              ),
-              BlocProvider(
-                create: (_) => getIt<MarketCubit>()..fetchMarketCoins(),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return Scaffold(
+            body: navigationShell,
+            bottomNavigationBar: CustomBottomNavBar(
+              navigationShell: navigationShell,
+            ),
+          );
+        },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.homeRoute,
+                pageBuilder: (context, state) => MaterialPage(
+                  key: state.pageKey,
+                  child: MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (_) =>
+                            getIt<GlobalDataCubit>()..fetchGlobalData(),
+                      ),
+                      BlocProvider(
+                        create: (_) =>
+                            getIt<TrendingCubit>()..fetchTrendingCoins(),
+                      ),
+                      BlocProvider(
+                        create: (_) => getIt<MarketCubit>()..fetchMarketCoins(),
+                      ),
+                    ],
+                    child: const HomeScreen(),
+                  ),
+                ),
               ),
             ],
-            child: const HomeScreen(),
           ),
-        ),
-      ),
-      GoRoute(
-        path: Routes.settingsRoute,
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const SettingsScreen()),
-      ),
-      GoRoute(
-        path: Routes.portfolioRoute,
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: BlocProvider(
-            create: (context) => getIt<PortfolioCubit>()..loadPortfolio(),
-            child: const PortfolioScreen(),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.marketRoute,
+                pageBuilder: (context, state) => MaterialPage(
+                  key: state.pageKey,
+                  child: const MarketScreen(),
+                ),
+              ),
+            ],
           ),
-        ),
-      ),
-      GoRoute(
-        path: Routes.marketRoute,
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const MarketScreen()),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.portfolioRoute,
+                pageBuilder: (context, state) => MaterialPage(
+                  key: state.pageKey,
+                  child: BlocProvider(
+                    create: (context) =>
+                        getIt<PortfolioCubit>()..loadPortfolio(),
+                    child: const PortfolioScreen(),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.settingsRoute,
+                pageBuilder: (context, state) => MaterialPage(
+                  key: state.pageKey,
+                  child: const SettingsScreen(),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
         path: Routes.searchRoute,

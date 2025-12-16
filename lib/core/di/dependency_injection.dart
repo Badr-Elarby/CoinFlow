@@ -64,6 +64,7 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   final dio = DioFactory.getDio();
   final firebaseAuth = FirebaseAuth.instance;
+  getIt.registerFactory<FirebaseAuth>(() => firebaseAuth);
 
   getIt.registerLazySingleton<Dio>(() => dio);
   getIt.registerLazySingleton<ApiConsumer>(() => DioConsumer(dio: dio));
