@@ -11,9 +11,9 @@ class AppInterceptor {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          // if (ApiConstants.apiKey.isNotEmpty) {
-          //   options.headers['x-cg-demo-api-key'] = ApiConstants.apiKey;
-          // }
+          if (ApiConstants.apiKey.isNotEmpty) {
+            options.headers['x-cg-demo-api-key'] = ApiConstants.apiKey;
+          }
           return handler.next(options);
         },
       ),

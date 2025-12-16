@@ -17,17 +17,12 @@ RequestHolderSignup _$RequestHolderSignupFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$RequestHolderSignupToJson(
-        RequestHolderSignup instance) =>
-    <String, dynamic>{
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'email': instance.email,
-      'password': instance.password,
-      'confirmPassword': instance.confirmPassword,
-      'phone': instance.phone,
-    };
-
-
-
-
-
+  RequestHolderSignup instance,
+) => <String, dynamic>{
+  'firstName': instance.firstName,
+  'lastName': instance.lastName,
+  'email': instance.email,
+  'password': instance.password,
+  'confirmPassword': instance.confirmPassword,
+  'phone': instance.phone,
+};
