@@ -18,6 +18,8 @@ import 'package:team_7/features/portfolio/presentation/screens/portfolio_screen.
 import 'package:team_7/features/splash/presentation/screens/splash_screen.dart';
 import 'package:team_7/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:team_7/features/settings/presentation/screens/settings_screen.dart';
+import 'package:team_7/features/buy_crypto/presentation/screen/buy_crypto_screen.dart';
+import 'package:team_7/features/buy_crypto/presentation/screen/payment_method_screen.dart';
 import 'package:team_7/core/shared_widgets/custom_bottom_nav_bar.dart';
 
 class AppRouter {
@@ -156,6 +158,18 @@ class AppRouter {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           child: CoinDetailsScreen(coinId: state.extra as String),
+        ),
+      ),
+      GoRoute(
+        path: Routes.buyCryptoRoute,
+        pageBuilder: (context, state) =>
+            MaterialPage(key: state.pageKey, child: const BuyCryptoScreen()),
+      ),
+      GoRoute(
+        path: Routes.paymentMethodRoute,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const PaymentMethodScreen(),
         ),
       ),
     ],

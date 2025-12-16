@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:team_7/core/di/dependency_injection.dart';
 import 'package:team_7/core/theming/app_colors.dart';
@@ -32,11 +34,14 @@ class _BuyCryptoScreenContent extends StatefulWidget {
   const _BuyCryptoScreenContent();
 
   @override
-  State<_BuyCryptoScreenContent> createState() => _BuyCryptoScreenContentState();
+  State<_BuyCryptoScreenContent> createState() =>
+      _BuyCryptoScreenContentState();
 }
 
 class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
-  final TextEditingController _payController = TextEditingController(text: '1,800.00');
+  final TextEditingController _payController = TextEditingController(
+    text: '1,800.00',
+  );
   final TextEditingController _receiveController = TextEditingController();
 
   @override
@@ -54,10 +59,7 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
         backgroundColor: context.background,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: AppExtraColors.navyBlue,
-          ),
+          icon: Icon(Icons.arrow_back, color: AppExtraColors.navyBlue),
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
@@ -135,17 +137,19 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
                     onCurrencyTap: () => _showFiatPicker(context),
                     isFiat: true,
                     onChanged: (value) {
-                      context.read<BuyCryptoCubit>().updatePayAmountFromText(value);
+                      context.read<BuyCryptoCubit>().updatePayAmountFromText(
+                        value,
+                      );
                     },
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   // Swap Button
                   _buildSwapButton(context),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   // You Receive Section
                   CurrencyInputCard(
                     label: 'You Receive',
@@ -156,34 +160,37 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
                     isFiat: false,
                     readOnly: true,
                   ),
-                  
+
                   const SizedBox(height: 20),
-                  
+
                   // Exchange Rate
                   _buildExchangeRate(state),
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Exchange Fee Card
             ExchangeFeeCard(
               feePercent: state.feePercent,
               feeAmount: state.feeAmount,
             ),
-            
+
             const Spacer(),
-            
+
             // Continue Button
             CustomButton(
               text: 'Continue',
-              onPressed: () => _onContinue(context, state),
+              onPressed: () {
+                // _onContinue(context, state); // Original Logic
+                context.push(Routes.paymentMethodRoute);
+              },
               width: double.infinity,
               height: 56,
               backgroundColor: AppExtraColors.navyBlue,
             ),
-            
+
             const SizedBox(height: 30),
           ],
         ),
@@ -196,11 +203,7 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: AppExtraColors.danger,
-          ),
+          Icon(Icons.error_outline, size: 64, color: AppExtraColors.danger),
           const SizedBox(height: 16),
           Text(
             'Failed to load prices',
@@ -241,16 +244,9 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
       decoration: BoxDecoration(
         color: context.background,
         shape: BoxShape.circle,
-        border: Border.all(
-          color: context.outline.withAlpha(50),
-          width: 1,
-        ),
+        border: Border.all(color: context.outline.withAlpha(50), width: 1),
       ),
-      child: Icon(
-        Icons.swap_vert,
-        color: AppExtraColors.warning,
-        size: 22,
-      ),
+      child: Icon(Icons.swap_vert, color: AppExtraColors.warning, size: 22),
     );
   }
 
@@ -309,11 +305,7 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
             shape: BoxShape.circle,
           ),
           child: const Center(
-            child: Icon(
-              Icons.change_history,
-              color: Colors.white,
-              size: 14,
-            ),
+            child: Icon(Icons.change_history, color: Colors.white, size: 14),
           ),
         );
       case 'BTC':
@@ -421,25 +413,27 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
               ),
             ),
             const SizedBox(height: 16),
-            ...CryptoCurrency.fiatCurrencies.map((currency) => ListTile(
-              leading: _getCurrencyIcon(currency.symbol),
-              title: Text(
-                currency.name,
-                style: GoogleFonts.lato(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: context.onSurface,
+            ...CryptoCurrency.fiatCurrencies.map(
+              (currency) => ListTile(
+                leading: _getCurrencyIcon(currency.symbol),
+                title: Text(
+                  currency.name,
+                  style: GoogleFonts.lato(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: context.onSurface,
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                currency.symbol,
-                style: GoogleFonts.lato(
-                  fontSize: 14,
-                  color: AppExtraColors.paleSky,
+                subtitle: Text(
+                  currency.symbol,
+                  style: GoogleFonts.lato(
+                    fontSize: 14,
+                    color: AppExtraColors.paleSky,
+                  ),
                 ),
+                onTap: () => Navigator.pop(ctx),
               ),
-              onTap: () => Navigator.pop(ctx),
-            )),
+            ),
             const SizedBox(height: 20),
           ],
         ),
@@ -449,7 +443,7 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
 
   void _showCryptoPicker(BuildContext context, BuyCryptoPriceLoaded state) {
     final cubit = context.read<BuyCryptoCubit>();
-    
+
     showModalBottomSheet(
       context: context,
       backgroundColor: context.surface,
@@ -471,34 +465,36 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
               ),
             ),
             const SizedBox(height: 16),
-            ...CryptoCurrency.popularCryptos.map((crypto) => ListTile(
-              leading: _getCurrencyIcon(crypto.symbol),
-              title: Text(
-                crypto.name,
-                style: GoogleFonts.lato(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: context.onSurface,
+            ...CryptoCurrency.popularCryptos.map(
+              (crypto) => ListTile(
+                leading: _getCurrencyIcon(crypto.symbol),
+                title: Text(
+                  crypto.name,
+                  style: GoogleFonts.lato(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: context.onSurface,
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                crypto.symbol,
-                style: GoogleFonts.lato(
-                  fontSize: 14,
-                  color: AppExtraColors.paleSky,
+                subtitle: Text(
+                  crypto.symbol,
+                  style: GoogleFonts.lato(
+                    fontSize: 14,
+                    color: AppExtraColors.paleSky,
+                  ),
                 ),
+                trailing: state.receiveCryptoId == crypto.id
+                    ? Icon(Icons.check, color: AppExtraColors.success)
+                    : null,
+                onTap: () {
+                  cubit.changeCrypto(
+                    cryptoId: crypto.id,
+                    cryptoSymbol: crypto.symbol,
+                  );
+                  Navigator.pop(ctx);
+                },
               ),
-              trailing: state.receiveCryptoId == crypto.id
-                  ? Icon(Icons.check, color: AppExtraColors.success)
-                  : null,
-              onTap: () {
-                cubit.changeCrypto(
-                  cryptoId: crypto.id,
-                  cryptoSymbol: crypto.symbol,
-                );
-                Navigator.pop(ctx);
-              },
-            )),
+            ),
             const SizedBox(height: 20),
           ],
         ),
@@ -514,9 +510,7 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
           style: GoogleFonts.lato(fontWeight: FontWeight.w500),
         ),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         margin: const EdgeInsets.all(16),
       ),
     );

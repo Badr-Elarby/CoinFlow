@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
+import 'package:team_7/core/routing/routes.dart';
 import 'package:team_7/core/theming/app_colors.dart';
 import 'package:team_7/core/theming/theme_extensions.dart';
 
@@ -35,7 +37,7 @@ class CoinActionButtons extends StatelessWidget {
             child: _buildButton(
               context,
               label: 'Buy',
-              onTap: () => _showComingSoonSnackBar(context, 'Buy'),
+              onTap: () => context.push(Routes.buyCryptoRoute),
               isPrimary: true,
             ),
           ),
@@ -73,9 +75,7 @@ class CoinActionButtons extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: isPrimary 
-                    ? Colors.white 
-                    : AppExtraColors.danger,
+                color: isPrimary ? Colors.white : AppExtraColors.danger,
               ),
             ),
           ),
@@ -89,17 +89,12 @@ class CoinActionButtons extends StatelessWidget {
       SnackBar(
         content: Text(
           '$action feature coming soon!',
-          style: GoogleFonts.lato(
-            fontWeight: FontWeight.w500,
-          ),
+          style: GoogleFonts.lato(fontWeight: FontWeight.w500),
         ),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         margin: const EdgeInsets.all(16),
       ),
     );
   }
 }
-

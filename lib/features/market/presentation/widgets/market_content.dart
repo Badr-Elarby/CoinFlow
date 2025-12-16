@@ -40,7 +40,7 @@ class MarketContent extends StatelessWidget {
               return MarketCoinList(
                 coins: coins,
                 onCoinTap: (coin) {
-                  context.push(Routes.homeRoute, extra: coin);
+                  context.push(Routes.searchRoute, extra: coin.id);
                 },
               );
             },

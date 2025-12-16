@@ -8,6 +8,8 @@ class Routes {
   static const String portfolioRoute = '/portfolio';
   static const String marketRoute = '/market';
   static const String searchRoute = '/details';
+  static const String buyCryptoRoute = '/buy_crypto';
+  static const String paymentMethodRoute = '/payment_method';
 
   static const String onboardingCompletedKey = 'onboarding_completed';
 }
