@@ -130,7 +130,7 @@ class PaymentMethodScreen extends StatelessWidget {
                 text: 'Buy',
                 onPressed: () {},
                 width: double.infinity,
-                backgroundColor: AppExtraColors.navyBlue,
+                backgroundColor: context.primary,
                 height: 56,
               ),
             ],
@@ -170,14 +170,10 @@ class PaymentMethodScreen extends StatelessWidget {
             style: GoogleFonts.lato(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              color: AppExtraColors.navyBlue,
+              color: context.primary,
             ),
           ),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 16,
-            color: AppExtraColors.navyBlue,
-          ),
+          Icon(Icons.arrow_forward_ios, size: 16, color: context.primary),
         ],
       ),
     );
