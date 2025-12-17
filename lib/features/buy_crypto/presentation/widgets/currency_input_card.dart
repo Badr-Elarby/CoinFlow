@@ -13,6 +13,7 @@ class CurrencyInputCard extends StatelessWidget {
   final bool isFiat;
   final bool readOnly;
   final ValueChanged<String>? onChanged;
+  final String? hintText;
 
   const CurrencyInputCard({
     super.key,
@@ -24,6 +25,7 @@ class CurrencyInputCard extends StatelessWidget {
     this.isFiat = true,
     this.readOnly = false,
     this.onChanged,
+    this.hintText,
   });
 
   @override
@@ -41,7 +43,7 @@ class CurrencyInputCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        
+
         // Input Row
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,7 +53,9 @@ class CurrencyInputCard extends StatelessWidget {
               child: TextField(
                 controller: controller,
                 readOnly: readOnly,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[\d,.]')),
                 ],
@@ -59,22 +63,28 @@ class CurrencyInputCard extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 28,
                   fontWeight: FontWeight.w700,
-                  color: context.onSurface,
+                  color: context.primary,
                 ),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
                   isDense: true,
+                  hintText: hintText,
+                  hintStyle: GoogleFonts.lato(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: AppExtraColors.gray.withAlpha(100),
+                  ),
                   prefixText: isFiat ? '\$' : '',
                   prefixStyle: GoogleFonts.lato(
                     fontSize: 28,
                     fontWeight: FontWeight.w700,
-                    color: context.onSurface,
+                    color: context.primary,
                   ),
                 ),
               ),
             ),
-            
+
             // Currency Selector
             _CurrencySelector(
               currency: currency,
@@ -83,7 +93,7 @@ class CurrencyInputCard extends StatelessWidget {
             ),
           ],
         ),
-        
+
         // Divider
         Container(
           height: 1,
@@ -115,10 +125,7 @@ class _CurrencySelector extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.background,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: context.outline.withAlpha(50),
-            width: 1,
-          ),
+          border: Border.all(color: context.outline.withAlpha(50), width: 1),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -145,4 +152,3 @@ class _CurrencySelector extends StatelessWidget {
     );
   }
 }
-
