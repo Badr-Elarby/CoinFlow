@@ -39,9 +39,7 @@ class _BuyCryptoScreenContent extends StatefulWidget {
 }
 
 class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
-  final TextEditingController _payController = TextEditingController(
-    text: '1,800.00',
-  );
+  final TextEditingController _payController = TextEditingController();
   final TextEditingController _receiveController = TextEditingController();
 
   @override
@@ -107,93 +105,100 @@ class _BuyCryptoScreenContentState extends State<_BuyCryptoScreenContent> {
 
   Widget _buildContent(BuildContext context, BuyCryptoPriceLoaded state) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            // Input Section Container
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: context.surface,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: context.outline.withAlpha(20),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
+      child: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  // You Pay Section
-                  CurrencyInputCard(
-                    label: 'You Pay',
-                    controller: _payController,
-                    currency: state.payCurrency,
-                    currencyIcon: _getCurrencyIcon(state.payCurrency),
-                    onCurrencyTap: () => _showFiatPicker(context),
-                    isFiat: true,
-                    onChanged: (value) {
-                      context.read<BuyCryptoCubit>().updatePayAmountFromText(
-                        value,
-                      );
-                    },
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // Swap Button
-                  _buildSwapButton(context),
-
-                  const SizedBox(height: 16),
-
-                  // You Receive Section
-                  CurrencyInputCard(
-                    label: 'You Receive',
-                    controller: _receiveController,
-                    currency: state.receiveCurrency,
-                    currencyIcon: _getCurrencyIcon(state.receiveCurrency),
-                    onCurrencyTap: () => _showCryptoPicker(context, state),
-                    isFiat: false,
-                    readOnly: true,
-                  ),
-
                   const SizedBox(height: 20),
+                  // Input Section Container
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: context.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: context.outline.withAlpha(20),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        CurrencyInputCard(
+                          label: 'You Pay',
+                          controller: _payController,
+                          currency: state.payCurrency,
+                          currencyIcon: _getCurrencyIcon(state.payCurrency),
+                          onCurrencyTap: () => _showFiatPicker(context),
+                          isFiat: true,
+                          hintText: '1,800.00',
+                          onChanged: (value) {
+                            context
+                                .read<BuyCryptoCubit>()
+                                .updatePayAmountFromText(value);
+                          },
+                        ),
 
-                  // Exchange Rate
-                  _buildExchangeRate(state),
+                        const SizedBox(height: 16),
+
+                        // Swap Button
+                        _buildSwapButton(context),
+
+                        const SizedBox(height: 16),
+
+                        // You Receive Section
+                        CurrencyInputCard(
+                          label: 'You Receive',
+                          controller: _receiveController,
+                          currency: state.receiveCurrency,
+                          currencyIcon: _getCurrencyIcon(state.receiveCurrency),
+                          onCurrencyTap: () =>
+                              _showCryptoPicker(context, state),
+                          isFiat: false,
+                          readOnly: true,
+                        ),
+
+                        const SizedBox(height: 20),
+
+                        // Exchange Rate
+                        _buildExchangeRate(state),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // Exchange Fee Card
+                  ExchangeFeeCard(
+                    feePercent: state.feePercent,
+                    feeAmount: state.feeAmount,
+                  ),
+
+                  const Spacer(),
+
+                  // Continue Button
+                  CustomButton(
+                    text: 'Continue',
+                    onPressed: () {
+                      context.push(Routes.paymentMethodRoute);
+                    },
+                    width: double.infinity,
+                    height: 56,
+                    backgroundColor: AppExtraColors.navyBlue,
+                  ),
+
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
-
-            const SizedBox(height: 24),
-
-            // Exchange Fee Card
-            ExchangeFeeCard(
-              feePercent: state.feePercent,
-              feeAmount: state.feeAmount,
-            ),
-
-            const Spacer(),
-
-            // Continue Button
-            CustomButton(
-              text: 'Continue',
-              onPressed: () {
-                // _onContinue(context, state); // Original Logic
-                context.push(Routes.paymentMethodRoute);
-              },
-              width: double.infinity,
-              height: 56,
-              backgroundColor: AppExtraColors.navyBlue,
-            ),
-
-            const SizedBox(height: 30),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
