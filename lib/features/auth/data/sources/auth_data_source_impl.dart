@@ -1,0 +1,47 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:team_7/features/auth/domain/repository/auth_data_source.dart';
+
+class AuthDataSourceImpl implements AuthDataSource {
+  final FirebaseAuth _firebaseAuth;
+
+  AuthDataSourceImpl(this._firebaseAuth);
+
+  @override
+  Future<User> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String displayName,
+  }) async {
+    final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    if (userCredential.user == null) {
+      throw Exception('User creation failed');
+    }
+
+    await userCredential.user!.updateDisplayName(displayName);
+    await userCredential.user!.reload();
+    return _firebaseAuth.currentUser!;
+  }
+
+  @override
+  Future<User> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    if (userCredential.user == null) {
+      throw Exception('User sign in failed');
+    }
+    return userCredential.user!;
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
+  }
+}
