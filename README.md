@@ -135,97 +135,35 @@ lib/
     └── splash/            # Splash screen
 ```
 
-## 📸 Screenshots
+📸 Screenshots
 
-CoinFlow supports both **Light** and **Dark** themes with a fully responsive and adaptive UI.
+CoinFlow supports both Light and Dark themes with a fully responsive and adaptive UI.
 
-### 🔆 Light Mode vs 🌙 Dark Mode
-
-## 🔆 Light Theme
-
-### 🚀 Onboarding
-<img src="assets/screenshots/light/onboarding_1.jpeg" width="220"/>
-<img src="assets/screenshots/light/onboarding_2.jpeg" width="220"/>
-<img src="assets/screenshots/light/onboarding_3.jpeg" width="220"/>
-<img src="assets/screenshots/light/onboarding_4.jpeg" width="220"/>
-
----
-
-### 🔐 Authentication
-<img src="assets/screenshots/light/sign_in.jpeg" width="220"/>
-<img src="assets/screenshots/light/sign_up.jpeg" width="220"/>
-
----
-
-### 🏠 Home & Market
-<img src="assets/screenshots/light/home_1.jpeg" width="220"/>
-<img src="assets/screenshots/light/home_2.jpeg" width="220"/>
-<img src="assets/screenshots/light/market_1.jpeg" width="220"/>
-<img src="assets/screenshots/light/market_filter.jpeg" width="220"/>
-
----
-
-### 📊 Coin Details
-<img src="assets/screenshots/light/coin_details_1.jpeg" width="220"/>
-<img src="assets/screenshots/light/coin_details_2.jpeg" width="220"/>
-
----
-
-### 💼 Portfolio & Settings
-<img src="assets/screenshots/light/portfolio.jpeg" width="220"/>
-<img src="assets/screenshots/light/setting.jpeg" width="220"/>
-
----
-
-### 💳 Buy Crypto
-<img src="assets/screenshots/light/buy_crypto.jpeg" width="220"/>
-<img src="assets/screenshots/light/payment_methods.jpeg" width="220"/>
-
-
----
----
----
-## 🌙 Dark Theme
-
-### 🚀 Onboarding
-<img src="assets/screenshots/dark/onboarding_1.jpeg" width="220"/>
-<img src="assets/screenshots/dark/onboarding_2.jpeg" width="220"/>
-<img src="assets/screenshots/dark/onboarding_3.jpeg" width="220"/>
-<img src="assets/screenshots/dark/onboarding_4.jpeg" width="220"/>
-
----
-
-### 🔐 Authentication
-<img src="assets/screenshots/dark/sign_in.jpeg" width="220"/>
-<img src="assets/screenshots/dark/sign_up.jpeg" width="220"/>
-
----
-
-### 🏠 Home & Market
-<img src="assets/screenshots/dark/market_1.jpeg" width="220"/>
-<img src="assets/screenshots/dark/market_filter.jpeg" width="220"/>
-
----
-
-### 📊 Coin Details
-<img src="assets/screenshots/dark/coin_details_1.jpeg" width="220"/>
-<img src="assets/screenshots/dark/coin_details_2.jpeg" width="220"/>
-
----
-
-### 💼 Portfolio & Settings
-<img src="assets/screenshots/dark/portfolio.jpeg" width="220"/>
-<img src="assets/screenshots/dark/setting.jpeg" width="220"/>
-
----
-
-### 💳 Buy Crypto
-<img src="assets/screenshots/dark/buy_crypto.jpeg" width="220"/>
-<img src="assets/screenshots/dark/payment_methods.jpeg" width="220"/>
-
-
-## 🎬 App Demo
-
-<img src="assets/screenshots/demo/demo.gif" width="500"/>
-
-
+🔆 Light Theme
+🚀 Onboarding
+<p align="center"> <img src="assets/screenshots/light/onboarding_1.jpeg"/> <img src="assets/screenshots/light/onboarding_2.jpeg"/> <img src="assets/screenshots/light/onboarding_3.jpeg"/> <img src="assets/screenshots/light/onboarding_4.jpeg"/> </p>
+🔐 Authentication
+<p align="center"> <img src="assets/screenshots/light/sign_in.jpeg"/> <img src="assets/screenshots/light/sign_up.jpeg"/> </p>
+🏠 Home & Market
+<p align="center"> <img src="assets/screenshots/light/home_1.jpeg"/> <img src="assets/screenshots/light/home_2.jpeg"/> <img src="assets/screenshots/light/market_1.jpeg"/> <img src="assets/screenshots/light/market_filter.jpeg"/> </p>
+📊 Coin Details
+<p align="center"> <img src="assets/screenshots/light/coin_details_1.jpeg"/> <img src="assets/screenshots/light/coin_details_2.jpeg"/> </p>
+💼 Portfolio & Settings
+<p align="center"> <img src="assets/screenshots/light/portfolio.jpeg"/> <img src="assets/screenshots/light/setting.jpeg"/> </p>
+💳 Buy Crypto
+<p align="center"> <img src="assets/screenshots/light/buy_crypto.jpeg"/> <img src="assets/screenshots/light/payment_methods.jpeg"/> </p>
+🌙 Dark Theme
+🚀 Onboarding
+<p align="center"> <img src="assets/screenshots/dark/onboarding_1.jpeg"/> <img src="assets/screenshots/dark/onboarding_2.jpeg"/> <img src="assets/screenshots/dark/onboarding_3.jpeg"/> <img src="assets/screenshots/dark/onboarding_4.jpeg"/> </p>
+🔐 Authentication
+<p align="center"> <img src="assets/screenshots/dark/sign_in.jpeg"/> <img src="assets/screenshots/dark/sign_up.jpeg"/> </p>
+🏠 Home & Market
+<p align="center"> <img src="assets/screenshots/dark/market_1.jpeg"/> <img src="assets/screenshots/dark/market_filter.jpeg"/> </p>
+📊 Coin Details
+<p align="center"> <img src="assets/screenshots/dark/coin_details_1.jpeg"/> <img src="assets/screenshots/dark/coin_details_2.jpeg"/> </p>
+💼 Portfolio & Settings
+<p align="center"> <img src="assets/screenshots/dark/portfolio.jpeg"/> <img src="assets/screenshots/dark/setting.jpeg"/> </p>
+💳 Buy Crypto
+<p align="center"> <img src="assets/screenshots/dark/buy_crypto.jpeg"/> <img src="assets/screenshots/dark/payment_methods.jpeg"/> </p>
+🎬 App Demo
+<p align="center"> <img src="assets/screenshots/demo/demo.gif"/> </p>
