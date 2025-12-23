@@ -224,3 +224,8 @@ CoinFlow supports both **Light** and **Dark** themes with a fully responsive and
 <img src="assets/screenshots/dark/payment_methods.jpeg" width="220"/>
 
 
+## 🎬 App Demo
+
+<img src="assets/demo/demo.gif" width="500"/>
+
+
