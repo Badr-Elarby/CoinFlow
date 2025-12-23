@@ -3,6 +3,31 @@
 
 CoinFlow is a comprehensive and modern cryptocurrency tracking application built with Flutter. It offers real-time market data, seamless portfolio management, and a clean, responsive user interface for both light and dark modes. The app is powered by the CoinGecko API for live data and uses Firebase for secure user authentication.
 
+> ⚠️ Note:
+> This repository is a fork of a team project.
+## 👤 My Contribution
+
+This repository is a fork of a team project.  
+I was responsible for the following key areas:
+
+- 🎨 **UI Styling & Theming**
+  - Defined the complete color system, typography, and text styles
+  - Implemented Light & Dark themes with consistent design tokens
+
+- 📱 **Responsive & Adaptive Design**
+  - Built responsive layouts for different screen sizes
+  - Implemented adaptive UI for **tablet & landscape orientations**
+
+- 🧩 **Portfolio Feature**
+  - Developed the full Portfolio feature including UI, state management, and data flow
+
+- ⚙️ **Settings Feature**
+  - Implemented core settings functionality and UI
+
+- 📊 **Market Feature (Partial Contribution)**
+  - Contributed to the Market feature implementation and UI integration
+
+
 ## Features
 
 - **Real-time Market Data:** Track prices, market caps, and volume for thousands of cryptocurrencies.
