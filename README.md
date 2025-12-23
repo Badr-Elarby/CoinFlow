@@ -144,10 +144,10 @@ CoinFlow supports both **Light** and **Dark** themes with a fully responsive and
 ## 🔆 Light Theme
 
 ### 🚀 Onboarding
-<img src="assets/screenshots/light/onboarding_1_light.jpeg" width="220"/>
-<img src="assets/screenshots/light/onboarding_2_light.jpeg" width="220"/>
-<img src="assets/screenshots/light/onboarding_3_light.jpeg" width="220"/>
-<img src="assets/screenshots/light/onboarding_4_light.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_1.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_2.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_3.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_4.jpeg" width="220"/>
 
 ---
 
@@ -173,7 +173,7 @@ CoinFlow supports both **Light** and **Dark** themes with a fully responsive and
 
 ### 💼 Portfolio & Settings
 <img src="assets/screenshots/light/portfolio.jpeg" width="220"/>
-<img src="assets/screenshots/light/settings.jpeg" width="220"/>
+<img src="assets/screenshots/light/setting.jpeg" width="220"/>
 
 ---
 
