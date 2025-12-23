@@ -141,29 +141,29 @@ CoinFlow supports both Light and Dark themes with a fully responsive and adaptiv
 
 🔆 Light Theme
 🚀 Onboarding
-<p align="center"> <img src="assets/screenshots/light/onboarding_1.jpeg"/> <img src="assets/screenshots/light/onboarding_2.jpeg"/> <img src="assets/screenshots/light/onboarding_3.jpeg"/> <img src="assets/screenshots/light/onboarding_4.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/light/onboarding_1.jpeg" /></td> <td><img src="assets/screenshots/light/onboarding_2.jpeg" /></td> <td><img src="assets/screenshots/light/onboarding_3.jpeg" /></td> <td><img src="assets/screenshots/light/onboarding_4.jpeg" /></td> </tr> </table>
 🔐 Authentication
-<p align="center"> <img src="assets/screenshots/light/sign_in.jpeg"/> <img src="assets/screenshots/light/sign_up.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/light/sign_in.jpeg" /></td> <td><img src="assets/screenshots/light/sign_up.jpeg" /></td> </tr> </table>
 🏠 Home & Market
-<p align="center"> <img src="assets/screenshots/light/home_1.jpeg"/> <img src="assets/screenshots/light/home_2.jpeg"/> <img src="assets/screenshots/light/market_1.jpeg"/> <img src="assets/screenshots/light/market_filter.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/light/home_1.jpeg" /></td> <td><img src="assets/screenshots/light/home_2.jpeg" /></td> <td><img src="assets/screenshots/light/market_1.jpeg" /></td> <td><img src="assets/screenshots/light/market_filter.jpeg" /></td> </tr> </table>
 📊 Coin Details
-<p align="center"> <img src="assets/screenshots/light/coin_details_1.jpeg"/> <img src="assets/screenshots/light/coin_details_2.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/light/coin_details_1.jpeg" /></td> <td><img src="assets/screenshots/light/coin_details_2.jpeg" /></td> </tr> </table>
 💼 Portfolio & Settings
-<p align="center"> <img src="assets/screenshots/light/portfolio.jpeg"/> <img src="assets/screenshots/light/setting.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/light/portfolio.jpeg" /></td> <td><img src="assets/screenshots/light/setting.jpeg" /></td> </tr> </table>
 💳 Buy Crypto
-<p align="center"> <img src="assets/screenshots/light/buy_crypto.jpeg"/> <img src="assets/screenshots/light/payment_methods.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/light/buy_crypto.jpeg" /></td> <td><img src="assets/screenshots/light/payment_methods.jpeg" /></td> </tr> </table>
 🌙 Dark Theme
 🚀 Onboarding
-<p align="center"> <img src="assets/screenshots/dark/onboarding_1.jpeg"/> <img src="assets/screenshots/dark/onboarding_2.jpeg"/> <img src="assets/screenshots/dark/onboarding_3.jpeg"/> <img src="assets/screenshots/dark/onboarding_4.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/dark/onboarding_1.jpeg" /></td> <td><img src="assets/screenshots/dark/onboarding_2.jpeg" /></td> <td><img src="assets/screenshots/dark/onboarding_3.jpeg" /></td> <td><img src="assets/screenshots/dark/onboarding_4.jpeg" /></td> </tr> </table>
 🔐 Authentication
-<p align="center"> <img src="assets/screenshots/dark/sign_in.jpeg"/> <img src="assets/screenshots/dark/sign_up.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/dark/sign_in.jpeg" /></td> <td><img src="assets/screenshots/dark/sign_up.jpeg" /></td> </tr> </table>
 🏠 Home & Market
-<p align="center"> <img src="assets/screenshots/dark/market_1.jpeg"/> <img src="assets/screenshots/dark/market_filter.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/dark/market_1.jpeg" /></td> <td><img src="assets/screenshots/dark/market_filter.jpeg" /></td> </tr> </table>
 📊 Coin Details
-<p align="center"> <img src="assets/screenshots/dark/coin_details_1.jpeg"/> <img src="assets/screenshots/dark/coin_details_2.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/dark/coin_details_1.jpeg" /></td> <td><img src="assets/screenshots/dark/coin_details_2.jpeg" /></td> </tr> </table>
 💼 Portfolio & Settings
-<p align="center"> <img src="assets/screenshots/dark/portfolio.jpeg"/> <img src="assets/screenshots/dark/setting.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/dark/portfolio.jpeg" /></td> <td><img src="assets/screenshots/dark/setting.jpeg" /></td> </tr> </table>
 💳 Buy Crypto
-<p align="center"> <img src="assets/screenshots/dark/buy_crypto.jpeg"/> <img src="assets/screenshots/dark/payment_methods.jpeg"/> </p>
+<table> <tr> <td><img src="assets/screenshots/dark/buy_crypto.jpeg" /></td> <td><img src="assets/screenshots/dark/payment_methods.jpeg" /></td> </tr> </table>
 🎬 App Demo
-<p align="center"> <img src="assets/screenshots/demo/demo.gif"/> </p>
+<table> <tr> <td> <img src="assets/screenshots/demo/demo.gif" /> </td> </tr> </table>
