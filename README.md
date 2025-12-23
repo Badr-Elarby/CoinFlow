@@ -141,32 +141,43 @@ CoinFlow supports both **Light** and **Dark** themes with a fully responsive and
 
 ### 🔆 Light Mode vs 🌙 Dark Mode
 
-🔆 Light Theme
-#### Onboarding
-![](assets/screenshots/light/onboarding_1_light..jpeg)
-![](assets/screenshots/light/onboarding_2_light.jpeg)
-![](assets/screenshots/light/onboarding_3_light.jpeg)
-![](assets/screenshots/light/onboarding_4_light.jpeg)
+## 🔆 Light Theme
 
-#### Authentication
-![](assets/screenshots/light/sign_in.jpeg)
-![](assets/screenshots/light/sign_up.jpeg)
+### 🚀 Onboarding
+<img src="assets/screenshots/light/onboarding_1_light.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_2_light.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_3_light.jpeg" width="220"/>
+<img src="assets/screenshots/light/onboarding_4_light.jpeg" width="220"/>
 
-#### Home & Market
-![](assets/screenshots/light/home_1.jpeg)
-![](assets/screenshots/light/home_2.jpeg)
+---
 
-![](assets/screenshots/light/market_1.jpeg)
-![](assets/screenshots/light/market_filter.jpeg)
+### 🔐 Authentication
+<img src="assets/screenshots/light/sign_in.jpeg" width="220"/>
+<img src="assets/screenshots/light/sign_up.jpeg" width="220"/>
 
-#### Coin Details
-![](assets/screenshots/light/coin_details_1.jpeg)
-![](assets/screenshots/light/coin_details_2.jpeg)
+---
 
-#### Portfolio & Settings
-![](assets/screenshots/light/portfolio.jpeg)
-![](assets/screenshots/light/settings.jpeg)
+### 🏠 Home & Market
+<img src="assets/screenshots/light/home_1.jpeg" width="220"/>
+<img src="assets/screenshots/light/home_2.jpeg" width="220"/>
+<img src="assets/screenshots/light/market_1.jpeg" width="220"/>
+<img src="assets/screenshots/light/market_filter.jpeg" width="220"/>
 
-#### Buy Crypto
-![](assets/screenshots/light/buy_crypto.jpeg)
-![](assets/screenshots/light/payment_methods.jpeg)
+---
+
+### 📊 Coin Details
+<img src="assets/screenshots/light/coin_details_1.jpeg" width="220"/>
+<img src="assets/screenshots/light/coin_details_2.jpeg" width="220"/>
+
+---
+
+### 💼 Portfolio & Settings
+<img src="assets/screenshots/light/portfolio.jpeg" width="220"/>
+<img src="assets/screenshots/light/settings.jpeg" width="220"/>
+
+---
+
+### 💳 Buy Crypto
+<img src="assets/screenshots/light/buy_crypto.jpeg" width="220"/>
+<img src="assets/screenshots/light/payment_methods.jpeg" width="220"/>
+
