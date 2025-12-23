@@ -181,3 +181,43 @@ CoinFlow supports both **Light** and **Dark** themes with a fully responsive and
 <img src="assets/screenshots/light/buy_crypto.jpeg" width="220"/>
 <img src="assets/screenshots/light/payment_methods.jpeg" width="220"/>
 
+
+## 🌙 Dark Theme
+
+### 🚀 Onboarding
+<img src="assets/screenshots/dark/onboarding_1.jpeg" width="220"/>
+<img src="assets/screenshots/dark/onboarding_2.jpeg" width="220"/>
+<img src="assets/screenshots/dark/onboarding_3.jpeg" width="220"/>
+<img src="assets/screenshots/dark/onboarding_4.jpeg" width="220"/>
+
+---
+
+### 🔐 Authentication
+<img src="assets/screenshots/dark/sign_in.jpeg" width="220"/>
+<img src="assets/screenshots/dark/sign_up.jpeg" width="220"/>
+
+---
+
+### 🏠 Home & Market
+<img src="assets/screenshots/dark/market_1.jpeg" width="220"/>
+<img src="assets/screenshots/dark/market_filter.jpeg" width="220"/>
+
+---
+
+### 📊 Coin Details
+<img src="assets/screenshots/dark/coin_details_1.jpeg" width="220"/>
+<img src="assets/screenshots/dark/coin_details_2.jpeg" width="220"/>
+
+---
+
+### 💼 Portfolio & Settings
+<img src="assets/screenshots/dark/portfolio.jpeg" width="220"/>
+<img src="assets/screenshots/dark/setting.jpeg" width="220"/>
+
+---
+
+### 💳 Buy Crypto
+<img src="assets/screenshots/dark/buy_crypto.jpeg" width="220"/>
+<img src="assets/screenshots/dark/payment_methods.jpeg" width="220"/>
+
+
